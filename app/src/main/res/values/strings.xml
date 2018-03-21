@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+    <string name="title_1">QuizApp</string>
+    <string name="text_instructions">QuizApp</string>
+    <string name="header_title_1">QuizApp</string>
+    <string name="input_1">QuizApp</string>
+    <string name="button_text_play">QuizApp</string>
+    <string name="title_activity_free_text_response">FreeTextResponseActivity</string>
+    <string name="title_activity_one_or_more">OneOrMoreActivity</string>
+</resources>
