@@ -1,33 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.adrianraff.quizapp.OneOrMoreActivity">
+    android:layout_marginLeft="@dimen/activity_vertical_margin"
+    android:layout_marginTop="@dimen/activity_horizontal_margin"
 
-    <android.support.design.widget.AppBarLayout
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/textView_question_one_or_more"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Question"/>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_one_or_more" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
+    <CheckBox
+        android:id="@+id/checkbox_answer_one_or_more_1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Answer 1"/>
 
-</android.support.design.widget.CoordinatorLayout>
+
+    <CheckBox
+        android:id="@+id/checkbox_answer_one_or_more_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Answer 2"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_answer_one_or_more_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Answer 3"/>
+
+
+    <CheckBox
+        android:id="@+id/checkbox_answer_one_or_more_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Answer 4"/>
+
+
+
+
+
+
+
+</LinearLayout>
+
+
+
+
+
+
+
+

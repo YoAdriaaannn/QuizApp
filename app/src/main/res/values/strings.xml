@@ -7,4 +7,8 @@
     <string name="button_text_play">QuizApp</string>
     <string name="title_activity_free_text_response">FreeTextResponseActivity</string>
     <string name="title_activity_one_or_more">OneOrMoreActivity</string>
+    <string name="radiobutton_multi_answer_1">RadioButton</string>
+    <string name="radiobutton_answer_multi_2">RadioButton</string>
+    <string name="radiobutton_multi_answer_3">RadioButton</string>
+    <string name="radiobutton_mutli_answer_4">RadioButton</string>
 </resources>

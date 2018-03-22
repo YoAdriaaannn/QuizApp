@@ -13,70 +13,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+    android:layout_marginLeft="@dimen/activity_vertical_margin"
+    android:layout_marginRight="@dimen/activity_vertical_margin"
+    android:layout_marginTop="@dimen/activity_horizontal_margin"
 
-    android:orientation="vertical"
-    tools:context="com.adrianraff.quizapp.IntroActivity">
+    android:orientation="vertical">
 
 
     <TextView
         android:id="@+id/text_header_app_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
 
-        android:fontFamily="sans-serif-light"
-        android:padding="25dp"
         android:text="@string/title_1"
-        android:textAllCaps="true"
-        android:textColor="@android:color/white"
-        android:textSize="25sp" />
+
+        />
 
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textView_intro_instructions"
         android:layout_height="wrap_content"
+        android:layout_width="match_parent"
 
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
 
-        android:background="#99fc3535"
-        android:fontFamily="sans-serif"
-        android:padding="18dp"
         android:text="@string/text_instructions"
-        android:textColor="@android:color/black"
-        android:textSize="14sp" />
+     />
 
 
     <TextView
-        android:id="@+id/text_header_title"
-        android:layout_width="wrap_content"
+
+        android:id="@+id/text_header_input"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
 
-        android:fontFamily="sans-serif-light"
-        android:padding="16dp"
+
         android:text="@string/header_title_1"
-        android:textAllCaps="true"
-        android:textColor="@android:color/white"
-        android:textSize="25sp" />
+
+       />
 
 
     <EditText
-        android:id="@+id/edit_text_1"
+        android:id="@+id/editText_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+
 
         android:inputType="textPersonName"
-        android:padding="16sp"
+
         android:text="@string/input_1" />
-
-
 
 
     <Button
@@ -85,9 +72,7 @@
         android:layout_height="wrap_content"
 
 
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:padding="16sp"
+        android:onClick="startApp()"
         android:text="@string/button_text_play"
         android:textAllCaps="true"
         android:textColor="#FFFFFF" />
