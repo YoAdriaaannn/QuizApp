@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">QuizApp</string>
     <string name="title_1">QuizApp</string>
-    <string name="text_instructions">QuizApp</string>
+    <string name="text_instructions">This is a quiz app. Loris plurm ipsum lactinum blah blah blah blah blah.</string>
     <string name="header_title_1">QuizApp</string>
-    <string name="input_1">QuizApp</string>
-    <string name="button_text_play">QuizApp</string>
+    <string name="input_1">Please enter your name</string>
+    <string name="button_text_play">Begin</string>
     <string name="title_activity_free_text_response">FreeTextResponseActivity</string>
     <string name="title_activity_one_or_more">OneOrMoreActivity</string>
     <string name="radiobutton_multi_answer_1">RadioButton</string>

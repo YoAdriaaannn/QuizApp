@@ -42,17 +42,7 @@
      />
 
 
-    <TextView
 
-        android:id="@+id/text_header_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-
-
-        android:text="@string/header_title_1"
-
-       />
 
 
     <EditText
@@ -67,14 +57,36 @@
 
 
     <Button
-        android:id="@+id/button_play"
+    android:id="@+id/button_play"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+
+    android:onClick="startApp"
+    android:text="@string/button_text_play"
+    android:textAllCaps="true"
+    android:textColor="#FFFFFF" />
+
+
+    <Button
+        android:id="@+id/button_multi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
 
-        android:onClick="startApp()"
-        android:text="@string/button_text_play"
+        android:onClick="selectMulti"
+        android:text="MULTI"
         android:textAllCaps="true"
         android:textColor="#FFFFFF" />
 
+    <Button
+        android:id="@+id/button_free"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:onClick="selectQuestion"
+        android:text="NEXT"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF" />
 </LinearLayout>

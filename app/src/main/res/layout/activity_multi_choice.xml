@@ -16,6 +16,11 @@
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:text="TextView"
          />
+    <RadioGroup
+        android:id="@+id/radio_answers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <RadioButton
         android:id="@+id/radioButton_answer_multi_1"
         android:layout_width="wrap_content"
@@ -47,5 +52,25 @@
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:text="@string/radiobutton_mutli_answer_4"
         />
+</RadioGroup>
+    <Button
+        android:id="@+id/button_multi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
+
+        android:onClick="startApp"
+        android:text="MULTI"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF" />
+    <Button
+        android:id="@+id/button_free"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:onClick="selectQuestion"
+        android:text="NEXT"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF" />
 </LinearLayout>
