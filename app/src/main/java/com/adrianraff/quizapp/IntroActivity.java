@@ -228,19 +228,19 @@ public class IntroActivity extends AppCompatActivity {
 
     public void submitAnswer(View view) {
 
-        String selectedAnswer;
+
 
         switch (questionType.toString()) {
             case "MULTI":
 
                 RadioGroup rg = (RadioGroup) findViewById(R.id.radio_answers);
 
-               selectedAnswer = ((RadioButton) findViewById(rg.getCheckedRadioButtonId())).getText().toString();
-                Toast.makeText(this, "Your answer was " + selectedAnswer, Toast.LENGTH_LONG).show();
+               String selectedMultiAnswer = ((RadioButton) findViewById(rg.getCheckedRadioButtonId())).getText().toString();
+                Toast.makeText(this, "Your answer was " + selectedMultiAnswer, Toast.LENGTH_LONG).show();
 
-                if (selectedAnswer == theAnswer) {
+                if (selectedMultiAnswer.equals(theAnswer)) {
                     Log.v("Selected answer", "The answer was correct");
-                    answerKeeperArray[questionIndex] = selectedAnswer;
+                    answerKeeperArray[questionIndex] = selectedMultiAnswer.toString();
                 } else {
                     Log.v("Selected answer", "WRONG DUMBASS!");
                 }
@@ -252,8 +252,14 @@ public class IntroActivity extends AppCompatActivity {
                 break;
 
             case "FREE":
+               EditText selectedFreeAnswer = findViewById(R.id.editText_free_answer_one);
 
-
+                if (selectedFreeAnswer.getText().toString().equals(theAnswer)) {
+                    Log.v("Selected answer", "The answer was correct");
+                    answerKeeperArray[questionIndex] = selectedFreeAnswer.getText().toString();
+                } else {
+                    Log.v("Selected answer", "WRONG DUMBASS!");
+                }
                 break;
             default:
                 Toast.makeText(this, "Uh oh! Something went wrong", Toast.LENGTH_SHORT).show();
