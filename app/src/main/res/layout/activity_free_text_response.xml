@@ -26,29 +26,36 @@
         android:layout_height="wrap_content"
 
         android:inputType="textMultiLine" />
-
     <Button
-        android:id="@+id/button_multi"
+        android:id="@+id/button_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
 
-        android:onClick="selectMulti"
-        android:text="MULTI"
+        android:onClick="submitAnswer"
+        android:text="Submit Answer"
         android:textAllCaps="true"
         android:textColor="#FFFFFF" />
-
     <Button
-        android:id="@+id/button_free"
+        android:id="@+id/button_previous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
 
-        android:onClick="selectQuestion"
+        android:onClick="decrement"
+        android:text="PREV"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF" />
+    <Button
+        android:id="@+id/button_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:onClick="increment"
         android:text="NEXT"
         android:textAllCaps="true"
         android:textColor="#FFFFFF" />
-
 
 
 

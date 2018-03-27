@@ -48,19 +48,37 @@
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:text="Answer 4"/>
 
-
-
     <Button
-        android:id="@+id/button_free"
+        android:id="@+id/button_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
 
-        android:onClick="selectQuestion"
-        android:text="NEXT"
+        android:onClick="submitAnswer"
+        android:text="Submit Answer"
         android:textAllCaps="true"
         android:textColor="#FFFFFF" />
 
+    <Button
+        android:id="@+id/button_previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:onClick="decrement"
+        android:text="PREV"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF" />
+    <Button
+        android:id="@+id/button_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:onClick="increment"
+        android:text="NEXT"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF" />
 
 
 </LinearLayout>

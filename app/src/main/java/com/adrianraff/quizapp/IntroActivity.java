@@ -47,17 +47,23 @@ public class IntroActivity extends AppCompatActivity {
     private String userAnswer;
     //Radio group for answers
     RadioGroup radioAnswer;
+    public  int questionIndex;
 
     String questionType, theQuestion, answerA, answerB, answerC, answerD, theAnswer;
 
+
+    public String[] getQuestions;
+
+    public String answerKeeperArray[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //Init all the layouts and inflate them.
-
-
+        multi = getLayoutInflater().inflate(R.layout.activity_multi_choice, null);
+        many = getLayoutInflater().inflate(R.layout.activity_one_or_more, null);
+        free = getLayoutInflater().inflate(R.layout.activity_free_text_response, null);
 
         intro = getLayoutInflater().inflate(R.layout.activity_intro, null);
 
@@ -65,6 +71,11 @@ public class IntroActivity extends AppCompatActivity {
         userName = findViewById(R.id.editText_user_name);
         res = getResources();
         radioAnswer = (RadioGroup) findViewById(R.id.radio_answers);
+        questionIndex = 0;
+
+        getQuestions = res.getStringArray(R.array.testQuestionArray);
+        int arrayLength = getQuestions.length;
+        answerKeeperArray = new String[arrayLength];
 
 
     }
@@ -85,13 +96,12 @@ public class IntroActivity extends AppCompatActivity {
         // Grab a question from the string array
 
 
-        String[] getQuestions = res.getStringArray(R.array.testQuestionArray);
-        int arrayLength = getQuestions.length;
 
-        for (int i = 0; i < arrayLength; i++) {
-            StringTokenizer splitString = new StringTokenizer((getQuestions[i]), ":");
 
-            //Toast.makeText(this, arrayLength, Toast.LENGTH_SHORT).show();
+
+            StringTokenizer splitString = new StringTokenizer((getQuestions[questionIndex]), ":");
+
+
 
 
             // Parse the array into some string variables with the tokenizer
@@ -106,35 +116,41 @@ public class IntroActivity extends AppCompatActivity {
 
             switch (questionType.toString()) {
                 case "MULTI":
-                    multi = getLayoutInflater().inflate(R.layout.activity_multi_choice, null);
-                    selectMulti(multi, theQuestion, answerA, answerB, answerC, answerD, theAnswer);
 
+                    selectMulti(multi, theQuestion, answerA, answerB, answerC, answerD, theAnswer);
+                    break;
 
                 case "MANY":
-                    many = getLayoutInflater().inflate(R.layout.activity_one_or_more, null);
-                    selectMany(many, theQuestion, answerA, answerB, answerC, answerD, theAnswer);
 
+                    selectMany(many, theQuestion, answerA, answerB, answerC, answerD, theAnswer);
+                    break;
 
                 case "FREE":
-                    free = getLayoutInflater().inflate(R.layout.activity_free_text_response, null);
+
                     selectFree(free, theQuestion, theAnswer);
 
-
+                    break;
                 default:
                     Toast.makeText(this, "Uh oh! Something went wrong", Toast.LENGTH_SHORT).show();
                     Log.v("IntroActivity", "Some shit went south here.");
             }
         }
-    }
 
+    /**
+     *  A multiple choice question with only one possible answer was selected.
+     * @param view
+     * @param question
+     * @param answerA
+     * @param answerB
+     * @param answerC
+     * @param answerD
+     * @param theAnswer
+     */
 
     public void selectMulti(View view, String question, String answerA, String answerB, String answerC, String answerD, String theAnswer) {
 
         // Set content view to multi layout
-
-
         setContentView(view);
-
 
         // Set the values of the UI text to the string variable values. String theQuestionOne contains the question type.
 
@@ -154,19 +170,24 @@ public class IntroActivity extends AppCompatActivity {
         RadioButton answerRadio4 = findViewById(radioButton_answer_multi_4);
         answerRadio4.setText(answerD);
 
-
         Toast.makeText(this, "The answer is" + theAnswer, Toast.LENGTH_LONG).show();
-
     }
 
+    /**
+     * A question with many answers is selected. Passed arguments are the questions and answers to set the text of the layout.
+     * @param view
+     * @param question
+     * @param answerA
+     * @param answerB
+     * @param answerC
+     * @param answerD
+     * @param theAnswer
+     */
 
     public void selectMany(View view, String question, String answerA, String answerB, String answerC, String answerD, String theAnswer) {
 
-
         // Set content view to many layout
         setContentView(view);
-
-
 
         // Set the values of the UI text to the string variable values. String theQuestionOne contains the question type.
 
@@ -188,7 +209,6 @@ public class IntroActivity extends AppCompatActivity {
 
         Toast.makeText(this, "The answer is" + theAnswer, Toast.LENGTH_LONG).show();
 
-
     }
 
 
@@ -201,19 +221,76 @@ public class IntroActivity extends AppCompatActivity {
         Toast.makeText(this, "The answer is " + theAnswer, Toast.LENGTH_SHORT).show();
     }
 
-    public void checkAnswerMulti(String actualAnswer) {
+    /**
+     * Answer checking area
+     */
 
-        RadioGroup rg = (RadioGroup) findViewById(R.id.radio_answers);
 
-        String selectedAnswer = ((RadioButton) findViewById(rg.getCheckedRadioButtonId())).getText().toString();
-        Toast.makeText(this, "Your answer was " + selectedAnswer, Toast.LENGTH_LONG).show();
+    public void submitAnswer(View view) {
 
-        if (selectedAnswer == actualAnswer) {
-            Log.v("Selected answer", "The answer was correct");
-        } else {
-            Log.v("Selected answer", "WRONG DUMBASS!");
+        String selectedAnswer;
+
+        switch (questionType.toString()) {
+            case "MULTI":
+
+                RadioGroup rg = (RadioGroup) findViewById(R.id.radio_answers);
+
+               selectedAnswer = ((RadioButton) findViewById(rg.getCheckedRadioButtonId())).getText().toString();
+                Toast.makeText(this, "Your answer was " + selectedAnswer, Toast.LENGTH_LONG).show();
+
+                if (selectedAnswer == theAnswer) {
+                    Log.v("Selected answer", "The answer was correct");
+                    answerKeeperArray[questionIndex] = selectedAnswer;
+                } else {
+                    Log.v("Selected answer", "WRONG DUMBASS!");
+                }
+                break;
+
+            case "MANY":
+
+
+                break;
+
+            case "FREE":
+
+
+                break;
+            default:
+                Toast.makeText(this, "Uh oh! Something went wrong", Toast.LENGTH_SHORT).show();
+                Log.v("IntroActivity", "Some shit went south here.");
+
         }
+    }
 
+
+
+    /**
+     * Increase the questionIndex to select a question based on the index number from the array.xml file
+     * @param view
+     */
+    public void increment(View view) {
+        if (questionIndex >= 100) {
+
+            Toast.makeText(this, "OPPS!", Toast.LENGTH_SHORT).show();
+
+        } else {
+            questionIndex = questionIndex + 1;
+            selectQuestion();
+        }
+    }
+
+    /**
+     * Decrease the question index to go to the previous questions.
+     * @param view
+     */
+    public void decrement(View view) {
+        if (questionIndex <= 0) {
+            Toast.makeText(this, "SHIT FUCK!", Toast.LENGTH_SHORT).show();
+
+        } else {
+            questionIndex = questionIndex - 1;
+            selectQuestion();
+        }
     }
 }
 

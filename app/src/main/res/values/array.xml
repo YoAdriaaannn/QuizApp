@@ -9,12 +9,13 @@
 <!-- Format the test questions using ":" as a delimiter to split the string. First field is quiz question type. Use MULTI - FREE or MANY as and ID.  Next is the question and the last field is the correct indice number  -->
 <resources>
        <string-array name="testQuestionArray">
-      <item>MULTI:What is the name of this test?:A) A test:B) A quiz : C) A Spaz:D) None of the above:4 </item>
-           <item>MANY:What is the that of this test?:A) A test:B) A quiz:C) A Spaz:D) None of the above:5 </item>
-           <item>MANY:Colors are?:A) A test:B) A quiz:C) A Spaz:D) None of the above:5 </item>
-           <item>MULTI:Who is the president?:A) A douchbag:B) A dickhead C) A Spaz:D) None of the above:5 </item>
-           <item>FREE:Who is the your momma?:A) A douchbag:B) A dickhead C) A Spaz:D) None of the above:Your mom</item>
+      <item>MULTI:What is the name of this test?:A) A test:B) A quiz:C) A Spaz:D) None of the above:4:</item>
+           <item>MULTI:Who is the president?:A) A douchbag:B) A dickhead: C) A Spaz:D) None of the above:5:</item>
+           <item>MANY:What is the that of this test?:A) A test:B) A quiz:C) A Spaz:D) None of the above:5:</item>
+           <item>MANY:Colors are?:A) A test:B) A quiz:C) A Spaz:D) None of the above:5:</item>
 
-           <item>FREE:Who is the president?:A) A douchbag:B) A dickhead C) A Spaz:D) None of the above:Your mom</item>
+           <item>FREE:Who is the your momma?:A) A douchbag:B) A dickhead:C) A Spaz:D) None of the above:Your mom</item>
+
+           <item>FREE:Who is the president?:A) A douchbag:B) A dickhead:C) A Spaz:D) None of the above:Your mom</item>
     </string-array>
 </resources>

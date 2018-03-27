@@ -68,25 +68,5 @@
     android:textColor="#FFFFFF" />
 
 
-    <Button
-        android:id="@+id/button_multi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-
-        android:onClick="selectMulti"
-        android:text="MULTI"
-        android:textAllCaps="true"
-        android:textColor="#FFFFFF" />
-
-    <Button
-        android:id="@+id/button_free"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-
-        android:onClick="selectQuestion"
-        android:text="NEXT"
-        android:textAllCaps="true"
-        android:textColor="#FFFFFF" />
 </LinearLayout>
