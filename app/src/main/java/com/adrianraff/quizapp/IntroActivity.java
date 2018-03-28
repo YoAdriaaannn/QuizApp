@@ -47,14 +47,21 @@ public class IntroActivity extends AppCompatActivity {
     private String userAnswer;
     //Radio group for answers
     RadioGroup radioAnswer;
-    public  int questionIndex;
+    public int questionIndex;
 
-    String questionType, theQuestion, answerA, answerB, answerC, answerD, theAnswer;
+    String questionType, theQuestion, answerA, answerB, answerC, answerD, theAnswer, theAnswer2, theAnswer3, theAnswer4;
 
 
     public String[] getQuestions;
 
-    public String answerKeeperArray[];
+    public String answerKeeperArray[][];
+
+    // Checkbox answers
+    public CheckBox answerCheck1;
+    public CheckBox answerCheck2;
+    public CheckBox answerCheck3;
+    public CheckBox answerCheck4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +82,7 @@ public class IntroActivity extends AppCompatActivity {
 
         getQuestions = res.getStringArray(R.array.testQuestionArray);
         int arrayLength = getQuestions.length;
-        answerKeeperArray = new String[arrayLength];
+        answerKeeperArray = new String[arrayLength][4];
 
 
     }
@@ -96,48 +103,47 @@ public class IntroActivity extends AppCompatActivity {
         // Grab a question from the string array
 
 
+        StringTokenizer splitString = new StringTokenizer((getQuestions[questionIndex]), ":");
 
 
+        // Parse the array into some string variables with the tokenizer
+        questionType = splitString.nextToken().toString();
+        theQuestion = splitString.nextToken().toString();
+        answerA = splitString.nextToken().toString();
+        answerB = splitString.nextToken().toString();
+        answerC = splitString.nextToken().toString();
+        answerD = splitString.nextToken().toString();
+        theAnswer = splitString.nextToken().toString();
+        theAnswer2 = splitString.nextToken().toString();
+        theAnswer3 = splitString.nextToken().toString();
+        theAnswer4 = splitString.nextToken().toString();
+        Log.v("IntroActivity", questionType);
 
-            StringTokenizer splitString = new StringTokenizer((getQuestions[questionIndex]), ":");
+        switch (questionType.toString()) {
+            case "MULTI":
 
+                selectMulti(multi, theQuestion, answerA, answerB, answerC, answerD, theAnswer);
+                break;
 
+            case "MANY":
 
+                selectMany(many, theQuestion, answerA, answerB, answerC, answerD, theAnswer, theAnswer2, theAnswer3, theAnswer4);
+                break;
 
-            // Parse the array into some string variables with the tokenizer
-            questionType = splitString.nextToken().toString();
-            theQuestion = splitString.nextToken().toString();
-            answerA = splitString.nextToken().toString();
-            answerB = splitString.nextToken().toString();
-            answerC = splitString.nextToken().toString();
-            answerD = splitString.nextToken().toString();
-            theAnswer = splitString.nextToken().toString();
-            Log.v("IntroActivity", questionType);
+            case "FREE":
 
-            switch (questionType.toString()) {
-                case "MULTI":
+                selectFree(free, theQuestion, theAnswer);
 
-                    selectMulti(multi, theQuestion, answerA, answerB, answerC, answerD, theAnswer);
-                    break;
-
-                case "MANY":
-
-                    selectMany(many, theQuestion, answerA, answerB, answerC, answerD, theAnswer);
-                    break;
-
-                case "FREE":
-
-                    selectFree(free, theQuestion, theAnswer);
-
-                    break;
-                default:
-                    Toast.makeText(this, "Uh oh! Something went wrong", Toast.LENGTH_SHORT).show();
-                    Log.v("IntroActivity", "Some shit went south here.");
-            }
+                break;
+            default:
+                Toast.makeText(this, "Uh oh! Something went wrong", Toast.LENGTH_SHORT).show();
+                Log.v("IntroActivity", "Some shit went south here.");
         }
+    }
 
     /**
-     *  A multiple choice question with only one possible answer was selected.
+     * A multiple choice question with only one possible answer was selected.
+     *
      * @param view
      * @param question
      * @param answerA
@@ -175,6 +181,7 @@ public class IntroActivity extends AppCompatActivity {
 
     /**
      * A question with many answers is selected. Passed arguments are the questions and answers to set the text of the layout.
+     *
      * @param view
      * @param question
      * @param answerA
@@ -184,7 +191,7 @@ public class IntroActivity extends AppCompatActivity {
      * @param theAnswer
      */
 
-    public void selectMany(View view, String question, String answerA, String answerB, String answerC, String answerD, String theAnswer) {
+    public void selectMany(View view, String question, String answerA, String answerB, String answerC, String answerD, String theAnswer, String theAnswer2, String theAnswer3, String theAnswer4) {
 
         // Set content view to many layout
         setContentView(view);
@@ -195,16 +202,16 @@ public class IntroActivity extends AppCompatActivity {
 
         questionTextView.setText(question);
 
-        CheckBox answerCheck1 = findViewById(checkbox_answer_one_or_more_1);
+        answerCheck1 = findViewById(checkbox_answer_one_or_more_1);
         answerCheck1.setText(answerA);
 
-        CheckBox answerCheck2 = findViewById(checkbox_answer_one_or_more_2);
+        answerCheck2 = findViewById(checkbox_answer_one_or_more_2);
         answerCheck2.setText(answerB);
 
-        CheckBox answerCheck3 = findViewById(checkbox_answer_one_or_more_3);
+        answerCheck3 = findViewById(checkbox_answer_one_or_more_3);
         answerCheck3.setText(answerC);
 
-        CheckBox answerCheck4 = findViewById(checkbox_answer_one_or_more_4);
+        answerCheck4 = findViewById(checkbox_answer_one_or_more_4);
         answerCheck4.setText(answerD);
 
         Toast.makeText(this, "The answer is" + theAnswer, Toast.LENGTH_LONG).show();
@@ -229,34 +236,46 @@ public class IntroActivity extends AppCompatActivity {
     public void submitAnswer(View view) {
 
 
-
-        switch (questionType.toString()) {
+        switch (questionType) {
             case "MULTI":
 
                 RadioGroup rg = (RadioGroup) findViewById(R.id.radio_answers);
 
-               String selectedMultiAnswer = ((RadioButton) findViewById(rg.getCheckedRadioButtonId())).getText().toString();
+                String selectedMultiAnswer = ((RadioButton) findViewById(rg.getCheckedRadioButtonId())).getText().toString();
                 Toast.makeText(this, "Your answer was " + selectedMultiAnswer, Toast.LENGTH_LONG).show();
 
                 if (selectedMultiAnswer.equals(theAnswer)) {
                     Log.v("Selected answer", "The answer was correct");
-                    answerKeeperArray[questionIndex] = selectedMultiAnswer.toString();
+                    answerKeeperArray[questionIndex][0] = selectedMultiAnswer;
                 } else {
                     Log.v("Selected answer", "WRONG DUMBASS!");
                 }
                 break;
 
             case "MANY":
+                if (answerCheck1.getText().toString().equals(theAnswer)) {
+                    answerKeeperArray[questionIndex][0] = theAnswer;
+                }
+                if (answerCheck2.getText().toString().equals(theAnswer2)) {
+                    answerKeeperArray[questionIndex][1] = theAnswer2;
+                }
+                if (answerCheck3.getText().toString().equals(theAnswer3)) {
+                    answerKeeperArray[questionIndex][2] = theAnswer3;
+                }
+
+                if (answerCheck4.getText().toString().equals(theAnswer4)) {
+                    answerKeeperArray[questionIndex][3] = theAnswer4;
+        }
 
 
                 break;
 
             case "FREE":
-               EditText selectedFreeAnswer = findViewById(R.id.editText_free_answer_one);
+                EditText selectedFreeAnswer = findViewById(R.id.editText_free_answer_one);
 
                 if (selectedFreeAnswer.getText().toString().equals(theAnswer)) {
                     Log.v("Selected answer", "The answer was correct");
-                    answerKeeperArray[questionIndex] = selectedFreeAnswer.getText().toString();
+                    answerKeeperArray[questionIndex] [0] = selectedFreeAnswer.getText().toString();
                 } else {
                     Log.v("Selected answer", "WRONG DUMBASS!");
                 }
@@ -269,9 +288,9 @@ public class IntroActivity extends AppCompatActivity {
     }
 
 
-
     /**
      * Increase the questionIndex to select a question based on the index number from the array.xml file
+     *
      * @param view
      */
     public void increment(View view) {
@@ -287,6 +306,7 @@ public class IntroActivity extends AppCompatActivity {
 
     /**
      * Decrease the question index to go to the previous questions.
+     *
      * @param view
      */
     public void decrement(View view) {
