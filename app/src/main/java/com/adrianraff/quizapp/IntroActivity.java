@@ -49,7 +49,7 @@ public class IntroActivity extends AppCompatActivity {
     RadioGroup radioAnswer;
     public int questionIndex;
 
-    String questionType, theQuestion, answerA, answerB, answerC, answerD, theAnswer, theAnswer2, theAnswer3, theAnswer4;
+    String questionType, theQuestion, answerA, answerB, answerC, answerD, theAnswer, theAnswer2, theAnswer3, theAnswer4, totalCorrectAnswers;
 
 
     public String[] getQuestions;
@@ -62,6 +62,8 @@ public class IntroActivity extends AppCompatActivity {
     public CheckBox answerCheck3;
     public CheckBox answerCheck4;
 
+
+    public int arrayLength;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,10 +80,16 @@ public class IntroActivity extends AppCompatActivity {
         userName = findViewById(R.id.editText_user_name);
         res = getResources();
         radioAnswer = (RadioGroup) findViewById(R.id.radio_answers);
-        questionIndex = 0;
 
+        // used to page through the questions
+        questionIndex = 0;
+        // used to retrieve the questions from the string array
         getQuestions = res.getStringArray(R.array.testQuestionArray);
-        int arrayLength = getQuestions.length;
+
+        // determine the total amount of questions based on the array length
+        arrayLength = getQuestions.length;
+
+        // array to store answers the user selected
         answerKeeperArray = new String[arrayLength][4];
 
 
@@ -102,6 +110,9 @@ public class IntroActivity extends AppCompatActivity {
     public void selectQuestion() {
         // Grab a question from the string array
 
+        if (questionIndex == arrayLength){
+            endQuiz;
+        }
 
         StringTokenizer splitString = new StringTokenizer((getQuestions[questionIndex]), ":");
 
@@ -117,6 +128,8 @@ public class IntroActivity extends AppCompatActivity {
         theAnswer2 = splitString.nextToken().toString();
         theAnswer3 = splitString.nextToken().toString();
         theAnswer4 = splitString.nextToken().toString();
+        totalCorrectAnswers = splitString.nextToken().toString();
+
         Log.v("IntroActivity", questionType);
 
         switch (questionType.toString()) {
@@ -127,7 +140,7 @@ public class IntroActivity extends AppCompatActivity {
 
             case "MANY":
 
-                selectMany(many, theQuestion, answerA, answerB, answerC, answerD, theAnswer, theAnswer2, theAnswer3, theAnswer4);
+                selectMany(many, theQuestion, answerA, answerB, answerC, answerD, theAnswer, theAnswer2, theAnswer3, theAnswer4, totalCorrectAnswers);
                 break;
 
             case "FREE":
@@ -191,7 +204,7 @@ public class IntroActivity extends AppCompatActivity {
      * @param theAnswer
      */
 
-    public void selectMany(View view, String question, String answerA, String answerB, String answerC, String answerD, String theAnswer, String theAnswer2, String theAnswer3, String theAnswer4) {
+    public void selectMany(View view, String question, String answerA, String answerB, String answerC, String answerD, String theAnswer, String theAnswer2, String theAnswer3, String theAnswer4, String totalCorrectAnswers) {
 
         // Set content view to many layout
         setContentView(view);
@@ -253,21 +266,32 @@ public class IntroActivity extends AppCompatActivity {
                 break;
 
             case "MANY":
+                int manyCorrectAnswerKeeper = 0;
                 if (answerCheck1.getText().toString().equals(theAnswer)) {
                     answerKeeperArray[questionIndex][0] = theAnswer;
+                    manyCorrectAnswerKeeper++;
                 }
                 if (answerCheck2.getText().toString().equals(theAnswer2)) {
                     answerKeeperArray[questionIndex][1] = theAnswer2;
+                    manyCorrectAnswerKeeper++;
                 }
                 if (answerCheck3.getText().toString().equals(theAnswer3)) {
                     answerKeeperArray[questionIndex][2] = theAnswer3;
+                    manyCorrectAnswerKeeper++;
                 }
 
                 if (answerCheck4.getText().toString().equals(theAnswer4)) {
                     answerKeeperArray[questionIndex][3] = theAnswer4;
-        }
+                    manyCorrectAnswerKeeper++;
+                }
 
-
+                //check to see if the total correct answers have been met
+                int castStringTotalCorrectAnswers = Integer.parseInt(totalCorrectAnswers);
+                if (manyCorrectAnswerKeeper == castStringTotalCorrectAnswers) {
+                    Toast.makeText(this, "You got all the answers correct", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Opps there is an incorrect answer still", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
             case "FREE":
@@ -275,7 +299,7 @@ public class IntroActivity extends AppCompatActivity {
 
                 if (selectedFreeAnswer.getText().toString().equals(theAnswer)) {
                     Log.v("Selected answer", "The answer was correct");
-                    answerKeeperArray[questionIndex] [0] = selectedFreeAnswer.getText().toString();
+                    answerKeeperArray[questionIndex][0] = selectedFreeAnswer.getText().toString();
                 } else {
                     Log.v("Selected answer", "WRONG DUMBASS!");
                 }
@@ -318,6 +342,12 @@ public class IntroActivity extends AppCompatActivity {
             selectQuestion();
         }
     }
+
+    public void endQuiz(){
+
+        
+    }
+
 }
 
 
