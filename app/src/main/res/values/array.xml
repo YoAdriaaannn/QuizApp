@@ -5,18 +5,14 @@
   ~ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
   ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   ~
-  -->
-<!-- Format the test questions using ":" as a delimiter to split the string. First field is quiz question type. Use MULTI - FREE or MANY as and ID.  Next is the question and the last field is the correct indice number  -->
+  --><!-- Format the test questions using ":" as a delimiter to split the string. First field is quiz question type. Use MULTI - FREE or MANY as and ID.  Next is the question and the last field is the correct indice number  -->
 <resources>
-       <string-array name="testQuestionArray">
-      <item>MULTI:What is the name of this test?:A) A test:B) A quiz:C) A Spaz:D) None of the above:D) None of the above:x:x:x:1</item>
-           <item>MULTI:Who is the president?:A) A douchbag:B) A dickhead: C) A Spaz:D) None of the above:5:X:x:x:1</item>
-           <item>FREE:Who is the your momma?:A) A douchbag:B) A dickhead:C) A Spaz:D) None of the above:Your mom:x:x:x:1</item>
-
-           <item>FREE:Who is the president?:A) A douchbag:B) A dickhead:C) A Spaz:D) None of the above:Your mom:x:x:x:1</item>
-           <item>MANY:What is the that of this test?:A) A test:B) A quiz:C) A Spaz:D) None of the above:A) A test:B) A quiz:x:x:2</item>
-           <item>MANY:Colors are?:A) A test:B) A quiz:C) A Spaz:D) None of the above:A) A test:X:C) A Spaz:x:2</item>
-
-
+    <string-array name="testQuestionArray">
+        <item>MULTI:What is the first brand of Japanese motorcycle ever sold in the USA?:A) Suzuki:B) Honda:C) Kawasaki:D) None of the above:B) Honda:x:x:x:1</item>
+        <item>MULTI:Where is Harley Davidson built?:A)San Fransisco, California:B)Portland, Oregon:C)Milwaukee, Wisconsin:D) None of the above:C)Milwaukee, Wisconsin:X:x:x:1</item>
+        <item>FREE:A ______ mixes air and fuel for the engine:xxx:xxx:xxx:xxx:carburetor:x:x:x:1</item>
+        <item>FREE:What brand of motorcycle is choice among outlaw motorcycle clubs?:xxx:xxx:xxx:xxx:Harley Davidson:x:x:x:1</item>
+        <item>MANY:What are brands of motorcycles?:A) Jawa:B) CZ:C) Dell:D) BMW:A) Jawa:B) CZ:xxxx:D) BMW:3</item>
+        <item>MANY:What are found on a motorcycle?:A) A handlebar:B) A steering wheel:C) A Twist thingy:D) None of the above:A) A handlebar:xxx:xxx:xxx:1</item>
     </string-array>
 </resources>
