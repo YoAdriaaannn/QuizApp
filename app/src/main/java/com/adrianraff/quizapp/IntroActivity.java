@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -41,8 +42,6 @@ public class IntroActivity extends AppCompatActivity {
     // For layout changes
     private View multi, many, free, intro, end;
 
-    //Radio group for answers
-    RadioGroup radioAnswer;
 
     //Used to move through question array index
     public int questionIndex;
@@ -61,6 +60,10 @@ public class IntroActivity extends AppCompatActivity {
     public CheckBox answerCheck3;
     public CheckBox answerCheck4;
 
+    //Radio group for answers
+    RadioGroup radioAnswer;
+
+
     // Radio button for multi choice answers
     RadioButton answerRadio1;
     RadioButton answerRadio2;
@@ -78,18 +81,21 @@ public class IntroActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_intro);
+        LinearLayout activityIntro = (LinearLayout) findViewById(R.layout.activity_intro);
         //Init all the layouts and inflate them.
-        multi = getLayoutInflater().inflate(R.layout.activity_multi_choice, null);
-        many = getLayoutInflater().inflate(R.layout.activity_one_or_more, null);
-        free = getLayoutInflater().inflate(R.layout.activity_free_text_response, null);
+        multi = getLayoutInflater().inflate(R.layout.activity_multi_choice, activityIntro, true);
+        many = getLayoutInflater().inflate(R.layout.activity_one_or_more, activityIntro, true);
+        free = getLayoutInflater().inflate(R.layout.activity_free_text_response, activityIntro, true);
 
-        end = getLayoutInflater().inflate(R.layout.activity_end, null);
+        end = getLayoutInflater().inflate(R.layout.activity_end, activityIntro, true);
 
-        intro = getLayoutInflater().inflate(R.layout.activity_intro, null);
+        intro = getLayoutInflater().inflate(R.layout.activity_intro, activityIntro, true);
 
-        setContentView(intro);
+
         userName = findViewById(R.id.editText_user_name);
+
+
         Resources res = getResources();
         radioAnswer = findViewById(R.id.radio_answers);
 
@@ -128,7 +134,7 @@ public class IntroActivity extends AppCompatActivity {
     public void selectQuestion() {
 
         // Grab a question from the string array
-        StringTokenizer splitString = new StringTokenizer((getQuestions[questionIndex]), ":");
+        StringTokenizer splitString = new StringTokenizer((getQuestions[questionIndex]), "|");
 
 
         // Parse the array into some string variables with the tokenizer
@@ -188,7 +194,7 @@ public class IntroActivity extends AppCompatActivity {
 
         // Set content view to multi layout
         setContentView(view);
-        clearSelections();
+        clearSelections(view);
 
         // Set the values of the UI text to the string variable values. String theQuestionOne contains the question type.
 
@@ -226,7 +232,7 @@ public class IntroActivity extends AppCompatActivity {
 
         // Set content view to many layout
         setContentView(view);
-        clearSelections();
+        clearSelections(view);
 
         // Set the values of the UI text to the string variable values. String theQuestionOne contains the question type.
 
@@ -253,7 +259,7 @@ public class IntroActivity extends AppCompatActivity {
     public void selectFree(View view, String question, String theAnswer) {
 
         setContentView(view);
-        clearSelections();
+        clearSelections(view);
 
         TextView questionTextView = findViewById(textView_free_question);
         questionTextView.setText(question);
@@ -292,28 +298,62 @@ public class IntroActivity extends AppCompatActivity {
             case "MANY":
                 int manyCorrectAnswerKeeper = 0;
                 if (answerCheck1.isChecked() && answerCheck1.getText().toString().equals(theAnswer)) {
+                    // log answer into array
                     answerKeeperArray[questionIndex][0] = theAnswer;
                     Toast.makeText(this, "Answer A was correct", Toast.LENGTH_SHORT).show();
                     manyCorrectAnswerKeeper++;
                 }
+
+                if (answerCheck1.isChecked()){
+                    // log answer into array
+                    answerKeeperArray[questionIndex][0] = theAnswer;
+                }
+
+
                 if (answerCheck2.isChecked() && answerCheck2.getText().toString().equals(theAnswer2)) {
+                    //log answer into array
                     answerKeeperArray[questionIndex][1] = theAnswer2;
                     Toast.makeText(this, "Answer B was corrrect", Toast.LENGTH_SHORT).show();
                     manyCorrectAnswerKeeper++;
                 }
+
+                if (answerCheck2.isChecked()){
+                    // log answer into array
+                    answerKeeperArray[questionIndex][1] = theAnswer;
+                }
+
+
+
                 if (answerCheck3.isChecked() && answerCheck3.getText().toString().equals(theAnswer3)) {
+                    //log answer into array
                     answerKeeperArray[questionIndex][2] = theAnswer3;
                     Toast.makeText(this, "Answer C  was correct", Toast.LENGTH_SHORT).show();
                     manyCorrectAnswerKeeper++;
                 }
 
+                if (answerCheck3.isChecked()){
+                    // log answer into array
+                    answerKeeperArray[questionIndex][2] = theAnswer;
+                }
+
+
+
                 if (answerCheck4.isChecked() && answerCheck4.getText().toString().equals(theAnswer4)) {
+                    //log answer into array
                     answerKeeperArray[questionIndex][3] = theAnswer4;
                     Toast.makeText(this, "Answer D was correct", Toast.LENGTH_SHORT).show();
                     manyCorrectAnswerKeeper++;
                 }
 
-                //check to see if the total correct answers have been met
+                if (answerCheck4.isChecked()){
+                    // log answer into array
+                    answerKeeperArray[questionIndex][3] = theAnswer;
+                }
+
+
+
+                //check to see if the total correct answers have been met. Since the total is stored in a string
+                // we must cast the total to an integer to compare.
                 int castStringTotalCorrectAnswers = Integer.parseInt(totalCorrectAnswers);
                 if (manyCorrectAnswerKeeper == castStringTotalCorrectAnswers) {
                     Toast.makeText(this, "You got all the answers correct", Toast.LENGTH_SHORT).show();
@@ -397,7 +437,7 @@ public class IntroActivity extends AppCompatActivity {
      * Clear all selections from view. Call this before loading a question.
      */
 
-    public void clearSelections() {
+    public void clearSelections(View view) {
 
         RadioGroup rg = findViewById(R.id.radio_answers);
         if (rg != null) {
@@ -420,7 +460,11 @@ public class IntroActivity extends AppCompatActivity {
         }
 
         if (selectedFreeAnswer != null) {
-            selectedFreeAnswer.setText("");
+            selectedFreeAnswer.setText("");        }
+
+
+        if (userName.getText().toString() != null){
+            userName.setText("");
         }
     }
 

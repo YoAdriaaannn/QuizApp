@@ -53,6 +53,7 @@
 
         android:inputType="textPersonName"
 
+        android:onClick="clearSelections"
         android:text="@string/input_1" />
 
 
