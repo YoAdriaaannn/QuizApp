@@ -8,65 +8,31 @@
   ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   ~
   -->
-<ScrollView
-    android:id="@+id/activity_end"
 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_intro"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="gone"
-
-    android:orientation="vertical">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_marginBottom="@dimen/activity_horizontal_margin"
     android:layout_marginLeft="@dimen/activity_vertical_margin"
     android:layout_marginRight="@dimen/activity_vertical_margin"
-    android:layout_marginTop="@dimen/activity_horizontal_margin">
+    android:layout_marginTop="@dimen/activity_horizontal_margin"
+
+    android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/text_header_app_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <include layout="@layout/activity_intro" />
 
 
-        android:text="@string/title_1"
+    <include layout="@layout/activity_multi_choice"></include>
 
-        />
+    <include layout="@layout/activity_free_text_response" />
 
+    <include layout="@layout/activity_one_or_more" />
 
-    <TextView
-        android:id="@+id/textView_end_totals"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-
-
-        android:text=""
-     />
-
-
-
-
-
-
-
-
-    <Button
-    android:id="@+id/button_play_again"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-
-
-    android:onClick="startApp"
-    android:text="Try again"
-    android:textAllCaps="true"
-    android:textColor="#FFFFFF" />
-
+    <include layout="@layout/activity_end">a</include>
 
 
 </LinearLayout>
-</ScrollView>

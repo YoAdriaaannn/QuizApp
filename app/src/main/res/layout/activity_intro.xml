@@ -9,8 +9,10 @@
   ~
   -->
 
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_intro"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="@dimen/activity_horizontal_margin"
@@ -34,15 +36,11 @@
 
     <TextView
         android:id="@+id/textView_intro_instructions"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
 
-        android:text="@string/text_instructions"
-     />
-
-
-
+        android:text="@string/text_instructions" />
 
 
     <EditText
@@ -58,16 +56,23 @@
 
 
     <Button
-    android:id="@+id/button_play"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+        android:id="@+id/button_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
 
-    android:onClick="startApp"
-    android:text="@string/button_text_play"
-    android:textAllCaps="true"
-    android:textColor="#FFFFFF" />
+        android:onClick="startApp"
+        android:text="@string/button_text_play"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF" />
 
+    <include layout="@layout/activity_multi_choice"></include>
+
+    <include layout="@layout/activity_free_text_response" />
+
+    <include layout="@layout/activity_one_or_more" />
+
+    <include layout="@layout/activity_end">a</include>
 
 
 </LinearLayout>

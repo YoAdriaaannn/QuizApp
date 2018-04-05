@@ -42,6 +42,7 @@ public class IntroActivity extends AppCompatActivity {
     private View many;
     private View free;
     private View end;
+    private View intro;
 
 
     //Used to move through question array index
@@ -84,16 +85,18 @@ public class IntroActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_intro);
+        setContentView(R.layout.activity_main);
 
 
         //TODO FIx layouts they are not keeping the formatting
         //Init all the layouts and inflate them.
-        multi = getLayoutInflater().inflate(R.layout.activity_multi_choice, activityIntro, true);
-        many = getLayoutInflater().inflate(R.layout.activity_one_or_more, activityIntro, true);
-        free = getLayoutInflater().inflate(R.layout.activity_free_text_response, activityIntro, true);
-        end = getLayoutInflater().inflate(R.layout.activity_end, activityIntro, true);
-        View intro = getLayoutInflater().inflate(R.layout.activity_intro, activityIntro, true);
+        multi = findViewById(R.id.activity_multi_choice);
+        many = findViewById(R.id.activity_one_or_more);
+        free = findViewById(R.id.activity_free_text);
+        end = findViewById(R.id.activity_end);
+        intro = findViewById(R.id.activity_intro);
+
+
 
         // used to get user name
         userName = findViewById(R.id.editText_user_name);
@@ -167,7 +170,7 @@ public class IntroActivity extends AppCompatActivity {
 
             case "FREE":
 
-                selectFree(free, theQuestion, theAnswer);
+                selectFree(free, theQuestion);
                 break;
 
             default:
@@ -192,7 +195,15 @@ public class IntroActivity extends AppCompatActivity {
     public void selectMulti(View view, String question, String answerA, String answerB, String answerC, String answerD, String theAnswer) {
 
         // Set content view to multi layout
-        setContentView(view);
+
+        intro.setVisibility(View.GONE);
+        multi.setVisibility(View.VISIBLE);
+        end.setVisibility(View.GONE);
+        many.setVisibility(View.GONE);
+        free.setVisibility(View.GONE);
+
+
+
         clearSelections(view);
 
         // Set the values of the UI text to the string variable values. String theQuestionOne contains the question type.
@@ -230,7 +241,11 @@ public class IntroActivity extends AppCompatActivity {
     public void selectMany(View view, String question, String answerA, String answerB, String answerC, String answerD, String theAnswer, String theAnswer2, String theAnswer3, String theAnswer4, String totalCorrectAnswers) {
 
         // Set content view to many layout
-        setContentView(view);
+        intro.setVisibility(View.GONE);
+        end.setVisibility(View.GONE);
+        many.setVisibility(View.VISIBLE);
+        free.setVisibility(View.GONE);
+        multi.setVisibility(View.GONE);
         clearSelections(view);
 
         // Set the values of the UI text to the string variable values. String theQuestionOne contains the question type.
@@ -263,7 +278,11 @@ public class IntroActivity extends AppCompatActivity {
 
     public void selectFree(View view, String question) {
 
-        setContentView(view);
+        intro.setVisibility(View.GONE);
+        end.setVisibility(View.GONE);
+        many.setVisibility(View.GONE);
+        free.setVisibility(View.VISIBLE);
+        multi.setVisibility(View.GONE);
         clearSelections(view);
 
         TextView questionTextView = findViewById(textView_free_question);
@@ -432,7 +451,13 @@ public class IntroActivity extends AppCompatActivity {
     //TODO format all this junk better!!! The output is sloppy AF!
     public void endQuiz(View view) {
         Toast.makeText(this, "You finished the quiz!", Toast.LENGTH_SHORT).show();
-        setContentView(view);
+
+        intro.setVisibility(View.GONE);
+
+        end.setVisibility(View.VISIBLE);
+        many.setVisibility(View.GONE);
+        free.setVisibility(View.GONE);
+        multi.setVisibility(View.GONE);
 
         StringTokenizer splitQuestions;
 
