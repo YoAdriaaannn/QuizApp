@@ -8,65 +8,80 @@
   ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   ~
   -->
-<ScrollView
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_end"
 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="gone"
-
+    android:background="@drawable/bg1"
     android:orientation="vertical">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_marginBottom="@dimen/activity_horizontal_margin"
-    android:layout_marginLeft="@dimen/activity_vertical_margin"
-    android:layout_marginRight="@dimen/activity_vertical_margin"
-    android:layout_marginTop="@dimen/activity_horizontal_margin">
 
+    <LinearLayout
 
-    <TextView
-        android:id="@+id/text_header_app_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:orientation="vertical">
 
 
-        android:text="@string/title_1"
+        <TextView
+            android:id="@+id/textView_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Score"
 
-        />
+            android:textColor="@color/colorText1"
 
+            />
 
-    <TextView
-        android:id="@+id/textView_end_totals"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-
-
-        android:text=""
-     />
-
-
-
-
-
-
-
-
-    <Button
-    android:id="@+id/button_play_again"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/textView_grade"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorTransWindow"
+            android:gravity="center"
+            android:text="1"
 
 
-    android:onClick="startApp"
-    android:text="Try again"
-    android:textAllCaps="true"
-    android:textColor="#FFFFFF" />
+            android:textColor="@android:color/darker_gray"
+            android:textSize="56sp"
+
+            />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView_end_totals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/colorText1"
+
+                android:textSize="12sp" />
+
+        </ScrollView>
 
 
+        <Button
+            android:id="@+id/button_play_again"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
+
+            android:onClick="startApp"
+            android:text="Try again"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
+
+
+    </LinearLayout>
 </LinearLayout>
-</ScrollView>

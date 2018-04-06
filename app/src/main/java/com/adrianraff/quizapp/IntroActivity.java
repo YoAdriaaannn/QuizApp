@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
@@ -38,11 +39,11 @@ public class IntroActivity extends AppCompatActivity {
     // For user name
     private EditText userName;
     // For layout changes
-    private View multi;
-    private View many;
-    private View free;
-    private View end;
-    private View intro;
+    private ViewGroup multi;
+    private ViewGroup many;
+    private ViewGroup free;
+    private ViewGroup end;
+    private ViewGroup intro;
 
 
     //Used to move through question array index
@@ -89,13 +90,19 @@ public class IntroActivity extends AppCompatActivity {
 
 
         //TODO FIx layouts they are not keeping the formatting
-        //Init all the layouts and inflate them.
+        //Init all the layouts as viewgroups
         multi = findViewById(R.id.activity_multi_choice);
         many = findViewById(R.id.activity_one_or_more);
         free = findViewById(R.id.activity_free_text);
         end = findViewById(R.id.activity_end);
         intro = findViewById(R.id.activity_intro);
 
+        //Set initial visibility of viewgroups
+        intro.setVisibility(View.VISIBLE);
+        multi.setVisibility(View.INVISIBLE);
+        end.setVisibility(View.INVISIBLE);
+        many.setVisibility(View.INVISIBLE);
+        free.setVisibility(View.INVISIBLE);
 
 
         // used to get user name
@@ -196,12 +203,11 @@ public class IntroActivity extends AppCompatActivity {
 
         // Set content view to multi layout
 
-        intro.setVisibility(View.GONE);
+        intro.setVisibility(View.INVISIBLE);
         multi.setVisibility(View.VISIBLE);
-        end.setVisibility(View.GONE);
-        many.setVisibility(View.GONE);
-        free.setVisibility(View.GONE);
-
+        end.setVisibility(View.INVISIBLE);
+        many.setVisibility(View.INVISIBLE);
+        free.setVisibility(View.INVISIBLE);
 
 
         clearSelections(view);
@@ -520,15 +526,45 @@ public class IntroActivity extends AppCompatActivity {
         String reviewMessage = strBuilder.toString();
 
 
-        TextView endQuizStats = findViewById(R.id.textView_end_totals);
+        TextView endQuizReview = findViewById(R.id.textView_end_totals);
+        TextView endQuizScore = findViewById(R.id.textView_score);
+        TextView endQuizGrade = findViewById(R.id.textView_grade);
+
         // Calculate percentage of score
         // TODO create a grading system
 
+        String grade;
+        String messageScore;
         int percent = (totalScore * 100) / arrayLengthQuestions;
-        String message;
-        message = "Congratulations " + userName.getText().toString() + "!" + " You made it to the end!" + "\n" + "The total amount of questions you got right were " + totalScore + " out of " + arrayLengthQuestions + "\n" + "That is " + percent + "%" + "\n \n \n" + "The answers you selected were " + "\n \n \n" + reviewMessage.toString()
-        ;
-        endQuizStats.setText(message);
+
+
+        if (percent < 0 || percent > 100){
+            grade = "out of bounds!";
+        }
+        else if (percent > 90){
+            grade = "A";
+        }
+        else if (percent > 80){
+            grade = "B";
+        }
+        else if (percent > 70){
+            grade = "C";
+        }
+        else if (percent > 60){
+            grade = "D";
+        }
+        else if (percent <= 50){
+            grade = "F";
+        }
+
+        else {
+            grade = "Opps! There is a problem!";
+        }
+        messageScore = "Congratulations " + userName.getText().toString() + "!" + " You made it to the end!" + "\n" + "The total amount of questions you got right were " + totalScore + " out of " + arrayLengthQuestions + "\n" + "That is " + percent + "%" + "\n \n \n";       ;
+
+        endQuizScore.setText(messageScore);
+        endQuizGrade.setText(grade);
+        endQuizReview.setText("The answers you selected were" + "\n \n \n" + reviewMessage.toString());
 
     }
 

@@ -1,66 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:id="@+id/activity_free_text"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="@dimen/activity_vertical_margin"
-    android:layout_marginTop="@dimen/activity_horizontal_margin"
-    android:layout_marginBottom="@dimen/activity_horizontal_margin"
-    android:layout_marginRight="@dimen/activity_vertical_margin"
-    android:visibility="gone"
+    android:background="@drawable/bg5"
+
 
     android:orientation="vertical">
 
+    <LinearLayout
 
-    <TextView
-        android:id="@+id/textView_free_question"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:text="Question"/>
 
 
-    <EditText
-        android:id="@+id/editText_free_answer_one"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:inputType="textMultiLine" />
-    <Button
-        android:id="@+id/button_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
 
-        android:onClick="submitAnswer"
-        android:text="Submit Answer"
-        android:textAllCaps="true"
-        android:textColor="#FFFFFF" />
-    <Button
-        android:id="@+id/button_previous"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/textView_free_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:textColor="@color/colorText1"
+            android:text="Question" />
 
 
-        android:onClick="decrement"
-        android:text="PREV"
-        android:textAllCaps="true"
-        android:textColor="#FFFFFF" />
-    <Button
-        android:id="@+id/button_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <EditText
+            android:id="@+id/editText_free_answer_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText1"
+
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/button_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
 
-        android:onClick="increment"
-        android:text="NEXT"
-        android:textAllCaps="true"
-        android:textColor="#FFFFFF" />
+            android:onClick="submitAnswer"
+            android:text="Submit Answer"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/button_previous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
 
+            android:onClick="decrement"
+            android:text="PREV"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
 
+        <Button
+            android:id="@+id/button_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:onClick="increment"
+            android:text="NEXT"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
+
+
+    </LinearLayout>
 </LinearLayout>
 
 
