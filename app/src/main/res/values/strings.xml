@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">QuizApp</string>
-    <string name="title_1">QuizApp</string>
-    <string name="text_instructions">This is a quiz app. Loris plurm ipsum lactinum blah blah blah blah blah.</string>
+    <string name="app_name">MotorcycleKnowledgeQuiz</string>
+    <string name="title_1">The Motorcycle Knowledge Quiz</string>
+    <string name="text_instructions">Welcome to the motorcycle knowledge quiz. This is a non timed quiz to test your knowledge on motorcycle trivia as well as overall saftey and operation.</string>
     <string name="header_title_1">QuizApp</string>
     <string name="input_1">Please enter your name</string>
     <string name="button_text_play">Begin</string>
@@ -11,4 +11,7 @@
     <string name="radiobutton_answer_multi_2">RadioButton</string>
     <string name="radiobutton_multi_answer_3">RadioButton</string>
     <string name="radiobutton_mutli_answer_4">RadioButton</string>
+    <string name="grade_theAnswersYouSelectedWere">Lets review your quiz. The questions were:</string>
+    <string name="email_testResults">Test Results</string>
+    <string name="end_your_grade_is">Your grade is:</string>
 </resources>

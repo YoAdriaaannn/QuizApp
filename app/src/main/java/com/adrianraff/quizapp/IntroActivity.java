@@ -1,6 +1,8 @@
 package com.adrianraff.quizapp;
 
+import android.content.Intent;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -38,6 +40,13 @@ public class IntroActivity extends AppCompatActivity {
 
     // For user name
     private EditText userName;
+
+    // For email to send results
+
+    private EditText emailAddress;
+    public String emailTarget;
+
+
     // For layout changes
     private ViewGroup multi;
     private ViewGroup many;
@@ -82,6 +91,9 @@ public class IntroActivity extends AppCompatActivity {
     // Total correct answer keeper
     public int totalScore = 0;
 
+    // Used for email summary
+    public String emailSummary;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +120,10 @@ public class IntroActivity extends AppCompatActivity {
         // used to get user name
         userName = findViewById(R.id.editText_user_name);
 
+        // used to grab email address from user
+        emailAddress = findViewById(R.id.editText_email_address);
+
+
         Resources res = getResources();
         radioAnswer = findViewById(R.id.radio_answers);
 
@@ -130,6 +146,7 @@ public class IntroActivity extends AppCompatActivity {
 
 
         String enteredName = userName.getText().toString();
+        emailTarget = emailAddress.getText().toString();
         String message = "Thank you" + enteredName + ". Get ready to begin!";
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         selectQuestion();
@@ -489,38 +506,35 @@ public class IntroActivity extends AppCompatActivity {
             totalCorrectAnswers = splitQuestions.nextToken();
 
             // Append the question to the final output string
-            strBuilder.append(theQuestion + "\n \n");
+            strBuilder.append("\n \n" + theQuestion + "\n");
+
             // Roll through the array and append the recorded answers
             for (int j = 0; j < 4; j++) {
                 if (answerKeeperArray[i][j] != null) {
-                    strBuilder.append("\n" + "Your answer(s) were: " + answerKeeperArray[i][j] + "\n \n" + "" + "The correct answers were: ");
+                    strBuilder.append("Your answer(s) were: " + answerKeeperArray[i][j] + "\n");
                 }
-
-            }
-            //Check the string array for null answers. use "#" as a null field identifier only append the string if there is an additional correct answer.
-            //TODO this isnt working exactly as intended. Fix it.
-            if (theAnswer != "#") {
-                strBuilder.append(theAnswer + " & ");
-            }
-
-
-            if (theAnswer2 != "#") {
-                strBuilder.append(theAnswer2 + " & ");
-            }
-
-
-            if (theAnswer3 != "#") {
-                strBuilder.append(theAnswer3 + " & ");
-
-            }
-
-            if (theAnswer4 != "#") {
-                strBuilder.append(theAnswer4 + "\n \n");
 
             }
 
 
         }
+        //Check the string array for null answers. use "#" as a null field identifier only append the string if there is an additional correct answer.
+        //TODO this isnt working exactly as intended. Fix it.
+
+        strBuilder.append("The correct answers were: ");
+        if (theAnswer != "#") {
+            strBuilder.append(theAnswer + " & ");
+        } else if (theAnswer2 != "#") {
+            strBuilder.append(theAnswer2 + " & ");
+        } else if (theAnswer3 != "#") {
+            strBuilder.append(theAnswer3 + " & ");
+
+        } else if (theAnswer4 != "#") {
+            strBuilder.append(theAnswer4 + "\n \n");
+
+        }
+
+        //append teh answers here
 
 // Cast the string builder to a string and us it in the final message string
         String reviewMessage = strBuilder.toString();
@@ -538,34 +552,29 @@ public class IntroActivity extends AppCompatActivity {
         int percent = (totalScore * 100) / arrayLengthQuestions;
 
 
-        if (percent < 0 || percent > 100){
+        if (percent < 0 || percent > 100) {
             grade = "out of bounds!";
-        }
-        else if (percent > 90){
+        } else if (percent > 90) {
             grade = "A";
-        }
-        else if (percent > 80){
+        } else if (percent > 80) {
             grade = "B";
-        }
-        else if (percent > 70){
+        } else if (percent > 70) {
             grade = "C";
-        }
-        else if (percent > 60){
+        } else if (percent > 60) {
             grade = "D";
-        }
-        else if (percent <= 50){
+        } else if (percent <= 50) {
             grade = "F";
-        }
-
-        else {
+        } else {
             grade = "Opps! There is a problem!";
         }
-        messageScore = "Congratulations " + userName.getText().toString() + "!" + " You made it to the end!" + "\n" + "The total amount of questions you got right were " + totalScore + " out of " + arrayLengthQuestions + "\n" + "That is " + percent + "%" + "\n \n \n";       ;
+        messageScore = "Congratulations " + userName.getText().toString() + "!" + " You made it to the end!" + "\n" + "The total amount of questions you got right were " + totalScore + " out of " + arrayLengthQuestions + "\n" + "That is " + percent + "%" + "\n \n \n";
+        ;
 
         endQuizScore.setText(messageScore);
         endQuizGrade.setText(grade);
-        endQuizReview.setText("The answers you selected were" + "\n \n \n" + reviewMessage.toString());
+        endQuizReview.setText(getString(R.string.grade_theAnswersYouSelectedWere) + "\n \n \n" + reviewMessage.toString());
 
+        emailSummary = messageScore + "Your overall grade was: " + grade + "\n" + getString(R.string.grade_theAnswersYouSelectedWere) + "\n" + reviewMessage.toString();
     }
 
 
@@ -605,6 +614,22 @@ public class IntroActivity extends AppCompatActivity {
         }
     }
 
+    public void sendMail(View view) {
+
+        // Send summary via e mail.
+
+        String mailTo = "mailto:" + emailTarget;
+
+        Intent sendMail = new Intent(Intent.ACTION_SEND);
+        sendMail.setData(Uri.parse(mailTo));
+        sendMail.setType("*/*");
+
+        sendMail.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_testResults));
+        sendMail.putExtra(Intent.EXTRA_TEXT, emailSummary);
+        if (sendMail.resolveActivity(getPackageManager()) != null) {
+            startActivity(sendMail);
+        }
+    }
 
 }
 

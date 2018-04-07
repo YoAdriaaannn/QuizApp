@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:id="@+id/activity_one_or_more"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,15 +8,26 @@
 
     android:orientation="vertical">
 
-    <LinearLayout
+
+
+
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/bg5"
+
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-
-
+        android:layout_marginTop="@dimen/view_question_spacing"
+        android:background="@color/colorTransWindow2"
         android:orientation="vertical">
 
 
@@ -26,8 +36,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:textColor="@color/colorText1"
-            android:text="Question" />
+            android:text="Question"
+            android:textColor="@color/colorText1" />
 
 
         <CheckBox
@@ -35,10 +45,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:textColor="@color/colorText1"
             android:backgroundTint="@color/colorText1"
             android:buttonTint="@color/colorText1"
-            android:text="Answer 1" />
+            android:text="Answer 1"
+            android:textColor="@color/colorText1" />
 
 
         <CheckBox
@@ -46,71 +56,79 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:textColor="@color/colorText1"
             android:backgroundTint="@color/colorText1"
             android:buttonTint="@color/colorText1"
+            android:text="Answer 2"
 
-            android:text="Answer 2" />
+            android:textColor="@color/colorText1" />
 
         <CheckBox
             android:id="@+id/checkbox_answer_one_or_more_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText1"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:backgroundTint="@color/colorText1"
             android:buttonTint="@color/colorText1"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:text="Answer 3" />
+            android:text="Answer 3"
+            android:textColor="@color/colorText1" />
 
 
         <CheckBox
             android:id="@+id/checkbox_answer_one_or_more_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText1"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:backgroundTint="@color/colorText1"
             android:buttonTint="@color/colorText1"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:text="Answer 4" />
+            android:text="Answer 4"
+            android:textColor="@color/colorText1" />
 
-        <Button
-            android:id="@+id/button_submit"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
 
-            android:onClick="submitAnswer"
-            android:text="Submit Answer"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF" />
-
-        <Button
-            android:id="@+id/button_previous"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/button_previous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
 
-            android:onClick="decrement"
-            android:text="PREV"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF" />
+                android:onClick="decrement"
+                android:text="PREV"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF" />
 
-        <Button
-            android:id="@+id/button_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/button_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
 
-            android:onClick="increment"
-            android:text="NEXT"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF" />
+                android:onClick="submitAnswer"
+                android:text="Submit Answer"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF" />
 
+
+
+            <Button
+                android:id="@+id/button_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:onClick="increment"
+                android:text="NEXT"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
-
-
-</LinearLayout>
+</RelativeLayout>
 
 
 

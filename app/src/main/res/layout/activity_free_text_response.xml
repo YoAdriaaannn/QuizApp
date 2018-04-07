@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:id="@+id/activity_free_text"
     android:layout_width="match_parent"
@@ -9,16 +9,27 @@
 
     android:orientation="vertical">
 
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/bg2"
+
+        android:scaleType="centerCrop" />
+
     <LinearLayout
 
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-
-
+        android:layout_marginTop="@dimen/view_question_spacing"
+        android:background="@color/colorTransWindow2"
+        android:padding="@dimen/activity_horizontal_margin"
         android:orientation="vertical">
 
 
@@ -27,54 +38,59 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:textColor="@color/colorText1"
-            android:text="Question" />
+            android:text="Question"
+            android:textColor="@color/colorText1" />
 
 
         <EditText
             android:id="@+id/editText_free_answer_one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText1"
+            android:inputType="textMultiLine"
 
-            android:inputType="textMultiLine" />
+            android:textColor="@color/colorText1" />
 
-        <Button
-            android:id="@+id/button_submit"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_previous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
 
-            android:onClick="submitAnswer"
-            android:text="Submit Answer"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF" />
+                android:onClick="decrement"
+                android:text="PREV"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF" />
 
-        <Button
-            android:id="@+id/button_previous"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-
-            android:onClick="decrement"
-            android:text="PREV"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF" />
-
-        <Button
-            android:id="@+id/button_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/button_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
 
-            android:onClick="increment"
-            android:text="NEXT"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF" />
+                android:onClick="submitAnswer"
+                android:text="Submit Answer"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF" />
 
+            <Button
+                android:id="@+id/button_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:onClick="increment"
+                android:text="NEXT"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
 
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
 
 
 

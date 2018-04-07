@@ -4,5 +4,9 @@
     <color name="colorPrimaryDark">#22650d</color>
     <color name="colorAccent">#dfff40</color>
     <color name="colorText1">#c2ff85</color>
-    <color name="colorTransWindow">#e2010107</color>
+
+    <color name="colorTransWindow">#9d0f4903</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorTransWindow2">#ac000000</color>
+
 </resources>

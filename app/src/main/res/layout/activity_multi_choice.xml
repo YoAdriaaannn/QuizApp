@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:id="@+id/activity_multi_choice"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg3"
     android:orientation="vertical"
-
     >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/bg4"
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:orientation="vertical">
+        android:layout_marginTop="@dimen/view_question_spacing"
+        android:background="@color/colorTransWindow2"
+        android:padding="@dimen/activity_horizontal_margin"
+
+        android:orientation="vertical"
+        >
 
         <TextView
             android:id="@+id/textView_question_multi"
@@ -25,86 +35,92 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:text="TextView"
-            android:textColor="@color/colorText1"/>
+            android:textColor="@color/colorText1" />
 
         <RadioGroup
             android:id="@+id/radio_answers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/radioButton_answer_multi_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:textColor="@color/colorText1"
                 android:buttonTint="@color/colorText1"
-                android:text="@string/radiobutton_multi_answer_1" />
+                android:text="@string/radiobutton_multi_answer_1"
+                android:textColor="@color/colorText1" />
 
             <RadioButton
                 android:id="@+id/radioButton_answer_multi_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:textColor="@color/colorText1"
-
                 android:buttonTint="@color/colorText1"
-                android:text="@string/radiobutton_answer_multi_2" />
+
+                android:text="@string/radiobutton_answer_multi_2"
+                android:textColor="@color/colorText1" />
 
             <RadioButton
                 android:id="@+id/radioButton_answer_multi_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:textColor="@color/colorText1"
                 android:buttonTint="@color/colorText1"
+                android:text="@string/radiobutton_multi_answer_3"
 
-                android:text="@string/radiobutton_multi_answer_3" />
+                android:textColor="@color/colorText1" />
 
             <RadioButton
                 android:id="@+id/radioButton_answer_multi_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:textColor="@color/colorText1"
                 android:buttonTint="@color/colorText1"
+                android:text="@string/radiobutton_mutli_answer_4"
 
-                android:text="@string/radiobutton_mutli_answer_4" />
+                android:textColor="@color/colorText1" />
         </RadioGroup>
 
-        <Button
-            android:id="@+id/button_submit"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
 
-            android:onClick="submitAnswer"
-            android:text="Submit Answer"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF" />
-
-        <Button
-            android:id="@+id/button_previous"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/button_previous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
 
-            android:onClick="decrement"
-            android:text="PREV"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF" />
+                android:onClick="decrement"
+                android:text="PREV"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF" />
 
-        <Button
-            android:id="@+id/button_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/button_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
 
-            android:onClick="increment"
-            android:text="NEXT"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF" />
+                android:onClick="submitAnswer"
+                android:text="Submit Answer"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/button_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:onClick="increment"
+                android:text="NEXT"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
