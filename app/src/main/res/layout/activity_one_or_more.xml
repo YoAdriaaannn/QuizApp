@@ -27,7 +27,7 @@
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/view_question_spacing"
-
+        android:padding="@dimen/standard_padding"
         android:background="@color/colorTransWindow2"
         android:orientation="vertical">
 
@@ -87,7 +87,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="@dimen/standard_padding">
 
 
             <Button
@@ -95,23 +97,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-
-                android:onClick="decrement"
-                android:text="PREV"
-                android:textAllCaps="true"
-                android:textColor="#FFFFFF" />
+                android:background="@drawable/ic_fast_rewind_white_48dp"
+                android:onClick="decrement" />
 
             <Button
                 android:id="@+id/button_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-
+                android:background="@drawable/ic_assignment_turned_in_white_48dp"
                 android:onClick="submitAnswer"
-                android:text="Submit Answer"
-                android:textAllCaps="true"
-                android:textColor="#FFFFFF" />
 
+                />
 
 
             <Button
@@ -119,15 +116,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-
+                android:background="@drawable/ic_fast_forward_white_48dp"
                 android:onClick="increment"
-                android:text="NEXT"
-                android:textAllCaps="true"
-                android:textColor="#FFFFFF" />
+
+                />
 
 
         </LinearLayout>
-
     </LinearLayout>
 </RelativeLayout>
 

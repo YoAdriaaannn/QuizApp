@@ -10,15 +10,14 @@
     android:orientation="vertical">
 
 
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/bg2"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
 
-        android:scaleType="centerCrop" />
+        android:src="@drawable/bg2" />
 
     <LinearLayout
 
@@ -30,8 +29,8 @@
         android:layout_marginTop="@dimen/view_question_spacing"
 
         android:background="@color/colorTransWindow2"
-        android:padding="@dimen/activity_horizontal_margin"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/standard_padding">
 
 
         <TextView
@@ -54,7 +53,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="@dimen/standard_padding">
 
             <Button
                 android:id="@+id/button_previous"
@@ -62,10 +63,8 @@
                 android:layout_height="wrap_content"
 
 
-                android:onClick="decrement"
-                android:text="PREV"
-                android:textAllCaps="true"
-                android:textColor="#FFFFFF" />
+                android:background="@drawable/ic_fast_rewind_white_48dp"
+                android:onClick="decrement" />
 
             <Button
                 android:id="@+id/button_submit"
@@ -73,10 +72,8 @@
                 android:layout_height="wrap_content"
 
 
-                android:onClick="submitAnswer"
-                android:text="Submit Answer"
-                android:textAllCaps="true"
-                android:textColor="#FFFFFF" />
+                android:background="@drawable/ic_assignment_turned_in_white_48dp"
+                android:onClick="submitAnswer" />
 
             <Button
                 android:id="@+id/button_next"
@@ -84,10 +81,8 @@
                 android:layout_height="wrap_content"
 
 
-                android:onClick="increment"
-                android:text="NEXT"
-                android:textAllCaps="true"
-                android:textColor="#FFFFFF" />
+                android:background="@drawable/ic_forward_white_48dp"
+                android:onClick="increment" />
         </LinearLayout>
 
     </LinearLayout>

@@ -39,11 +39,11 @@
     <string name="end_grade_f">F</string>
     <string name="error_problem">Opps! There is a problem!</string>
     <string name="end_congrats">Congratulations</string>
-    <string name="exclamation">!</string>
+    <string name="exclamation">! &#160;</string>
     <string name="end_you_made_it_to_the_end">You made it to the end!</string>
-    <string name="end_total_questions_righ">The total amount of questions you got right were</string>
-    <string name="end_out_of">out of</string>
-    <string name="end_that_is">That is</string>
+    <string name="end_total_questions_righ">The total amount of questions you got right were &#160;</string>
+    <string name="end_out_of">&#160; out of &#160;</string>
+    <string name="end_that_is">That is &#160;</string>
     <string name="percent">%</string>
-    <string name="end_overall_grade">Your overall grade was:</string>
+    <string name="end_overall_grade">Your overall grade was: &#160;</string>
 </resources>

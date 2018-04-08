@@ -164,10 +164,10 @@ public class IntroActivity extends AppCompatActivity {
      */
 
     public void selectQuestion() {
-        //Hide softkey
-        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-        //Hide:
-        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+
+        // Hide the soft keyboard for better looks.
+        hideKeyboard();
+
 
         // Grab a question from the string array
         StringTokenizer splitString = new StringTokenizer((getQuestions[questionIndex]), "|");
@@ -225,7 +225,7 @@ public class IntroActivity extends AppCompatActivity {
 
     public void selectMulti(View view, String question, String answerA, String answerB, String answerC, String answerD, String theAnswer) {
 
-
+        hideKeyboard();
 
         // Set content view to multi layout
 
@@ -272,7 +272,7 @@ public class IntroActivity extends AppCompatActivity {
     public void selectMany(View view, String question, String answerA, String answerB, String answerC, String answerD, String theAnswer, String theAnswer2, String theAnswer3, String theAnswer4, String totalCorrectAnswers) {
 
 
-
+        hideKeyboard();
 
         // Set content view to many layout
         intro.setVisibility(View.GONE);
@@ -312,7 +312,7 @@ public class IntroActivity extends AppCompatActivity {
 
     public void selectFree(View view, String question) {
 
-
+        hideKeyboard();
 
 
         // Set our layout views to have the proper one visible.
@@ -337,7 +337,7 @@ public class IntroActivity extends AppCompatActivity {
 
 
     public void submitAnswer(View view) {
-
+        hideKeyboard();
         // Look at the question type tag from the string array that stores questions and select the proper case
         switch (questionType) {
 
@@ -660,10 +660,13 @@ public class IntroActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * Call this to hide soft keyboard
-     */
+  public void hideKeyboard(){
 
+      //Hide softkey
+      InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+      //Hide:
+      imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+  }
 
 
 }
