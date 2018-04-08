@@ -47,7 +47,7 @@ public class IntroActivity extends AppCompatActivity {
     public String emailTarget;
 
 
-    // For layout changes
+    // For layout changes. These designate the layout based on question type.
     private ViewGroup multi;
     private ViewGroup many;
     private ViewGroup free;
@@ -141,13 +141,16 @@ public class IntroActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * The application starting point. Grab name and email address from user then select a question from the pool.
+     */
 
     public void startApp(View view) {
 
 
         String enteredName = userName.getText().toString();
         emailTarget = emailAddress.getText().toString();
-        String message = "Thank you" + enteredName + ". Get ready to begin!";
+        String message = getString(R.string.startApp_thank_you) + enteredName + getString(R.string.startApp_get_ready);
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         selectQuestion();
 
@@ -157,6 +160,7 @@ public class IntroActivity extends AppCompatActivity {
     /**
      * Call this to select a question
      */
+
     public void selectQuestion() {
 
         // Grab a question from the string array
@@ -176,8 +180,7 @@ public class IntroActivity extends AppCompatActivity {
         theAnswer4 = splitString.nextToken();
         totalCorrectAnswers = splitString.nextToken();
 
-        // Log the question type for diagnostics.
-        Log.v("IntroActivity", questionType);
+
 
 
         // Check to see which type of question is being selected from the question string array and call the proper method to display it.
@@ -199,7 +202,7 @@ public class IntroActivity extends AppCompatActivity {
 
             default:
                 // Error catching
-                Toast.makeText(this, "Uh oh! Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.error_something_wrong, Toast.LENGTH_SHORT).show();
                 Log.v("IntroActivity", "Some shit went south here.");
         }
     }
@@ -226,13 +229,12 @@ public class IntroActivity extends AppCompatActivity {
         many.setVisibility(View.INVISIBLE);
         free.setVisibility(View.INVISIBLE);
 
-
+        // Clear all the views from user selections
         clearSelections(view);
 
         // Set the values of the UI text to the string variable values. String theQuestionOne contains the question type.
 
         TextView questionTextView = findViewById(textView_question_multi);
-
         questionTextView.setText(question);
 
 
@@ -293,13 +295,15 @@ public class IntroActivity extends AppCompatActivity {
     }
 
     /**
-     * Select a free answer question
+     * Select a free answer question.
      *
-     * @param view
-     * @param question
+     * @param view ~
+     * @param question Is the question being asked.
      */
 
     public void selectFree(View view, String question) {
+
+        // Set our layout views to have the proper one visible.
 
         intro.setVisibility(View.GONE);
         end.setVisibility(View.GONE);
@@ -308,6 +312,8 @@ public class IntroActivity extends AppCompatActivity {
         multi.setVisibility(View.GONE);
         clearSelections(view);
 
+
+        // Set the textview with the question to be asked.
         TextView questionTextView = findViewById(textView_free_question);
         questionTextView.setText(question);
 
@@ -320,12 +326,19 @@ public class IntroActivity extends AppCompatActivity {
 
     public void submitAnswer(View view) {
 
-
+        // Look at the question type tag from the string array that stores questions and select the proper case
         switch (questionType) {
 
             // If a multiple choice question is selected start here.
             case "MULTI":
+
+                // Check to see if any radio button is selected. If none then error message,
                 RadioGroup rg = findViewById(R.id.radio_answers);
+                if (rg.getCheckedRadioButtonId() == -1 ){
+
+                    Toast.makeText(this, R.string.error_please_select_answer, Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 String selectedMultiAnswer = ((RadioButton) findViewById(rg.getCheckedRadioButtonId())).getText().toString();
                 Toast.makeText(this, "Your answer was " + selectedMultiAnswer, Toast.LENGTH_SHORT).show();
@@ -336,6 +349,7 @@ public class IntroActivity extends AppCompatActivity {
                     Toast.makeText(this, "The answer was correct. " + theAnswer, Toast.LENGTH_LONG).show();
                     answerKeeperArray[questionIndex][0] = selectedMultiAnswer;
                     totalScore = totalScore + 1;
+
                 } else {
                     Toast.makeText(this, "WRONG! The answer was " + theAnswer, Toast.LENGTH_LONG).show();
                     //log the answer to the array even if it is wrong
@@ -427,7 +441,7 @@ public class IntroActivity extends AppCompatActivity {
                 break;
             default:
                 Toast.makeText(this, "Uh oh! Something went wrong", Toast.LENGTH_SHORT).show();
-                Log.v("IntroActivity", "Some shit went south here.");
+                Log.v("IntroActivity", "Some stuff went south here.");
 
         }
         increment(view);

@@ -14,4 +14,8 @@
     <string name="grade_theAnswersYouSelectedWere">Lets review your quiz. The questions were:</string>
     <string name="email_testResults">Test Results</string>
     <string name="end_your_grade_is">Your grade is:</string>
+    <string name="startApp_thank_you">Thank you,</string>
+    <string name="startApp_get_ready">. Get ready to begin!</string>
+    <string name="error_something_wrong">Uh oh! Something went wrong</string>
+    <string name="error_please_select_answer">Please select an answer!</string>
 </resources>
