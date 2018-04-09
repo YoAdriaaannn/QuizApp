@@ -21,6 +21,9 @@
         android:layout_centerHorizontal="true"
         android:scaleType="centerCrop"
         android:src="@drawable/bg3" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -87,6 +90,6 @@
           />
 
     </LinearLayout>
-
+    </ScrollView>
 
 </RelativeLayout>

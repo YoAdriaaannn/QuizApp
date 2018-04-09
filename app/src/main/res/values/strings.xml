@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MotorcycleKnowledgeQuiz</string>
     <string name="title_1">The Motorcycle Knowledge Quiz</string>
-    <string name="text_instructions">Welcome to the motorcycle knowledge quiz. This is a non timed quiz to test your knowledge on motorcycle trivia as well as overall saftey and operation.</string>
+    <string name="text_instructions">Welcome to the motorcycle knowledge quiz. This is a non timed quiz to test your knowledge on motorcycle trivia as well as overall safety and operation. At the end of the quiz you will be given the opportunity to review your questions and e mail the results. A grade of A thru F will be given based on the upper 60%. There is a total of 9 questions on this particular quiz. \n\n\ The option to add more questions, or localize the app is available by editing a few resource files. The questions for this sample quiz exam are provided by a string array in the array.xml file. The string array is being used as a pseudo flat table database using "|" as a delimiter. This is later parsed by the stringTokenizer class into variables that are question type, the question itself and the possible correct answers. The users answers are stored in a multi dimensional array that can be paged through so they can change their answers. \n\n\ The sample project is still WIP and I hope to bring it to a level where I can use it as a marketing tool for one of my own business in the motorcycle repair industry. \n\n\ To begin, please enter your name and e-mail address then click the arrow.  </string>
     <string name="header_title_1">QuizApp</string>
     <string name="input_1">Please enter your name</string>
     <string name="button_text_play">Begin</string>
@@ -25,7 +25,7 @@
     <string name="answer_correct_d">Answer D was correct</string>
     <string name="answer_try_again">Oops try again!</string>
     <string name="the_answer_was_correct">The answer was correct</string>
-    <string name="answer_wrong">The answer was wrong!</string>
+    <string name="answer_wrong">The answer was wrong! The correct answer is: &#160; </string>
     <string name="something_went_wrong">Uh oh! Something went wrong</string>
     <string name="error_no_prior_questions">Sorry there are no more questions prior to this one!</string>
     <string name="end_you_finished">You finished the quiz!</string>

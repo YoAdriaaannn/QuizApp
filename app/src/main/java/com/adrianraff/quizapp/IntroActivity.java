@@ -1,6 +1,7 @@
 package com.adrianraff.quizapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
@@ -154,6 +155,7 @@ public class IntroActivity extends AppCompatActivity {
         emailTarget = emailAddress.getText().toString();
         String message = getString(R.string.startApp_thank_you) + enteredName + getString(R.string.startApp_get_ready);
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        view.clearFocus();
         selectQuestion();
 
 
@@ -166,7 +168,7 @@ public class IntroActivity extends AppCompatActivity {
     public void selectQuestion() {
 
         // Hide the soft keyboard for better looks.
-        hideKeyboard();
+
 
 
         // Grab a question from the string array
@@ -209,6 +211,7 @@ public class IntroActivity extends AppCompatActivity {
                 Toast.makeText(this, R.string.error_something_wrong, Toast.LENGTH_SHORT).show();
                 Log.v("IntroActivity", "Some shit went south here.");
         }
+
     }
 
     /**
@@ -225,7 +228,7 @@ public class IntroActivity extends AppCompatActivity {
 
     public void selectMulti(View view, String question, String answerA, String answerB, String answerC, String answerD, String theAnswer) {
 
-        hideKeyboard();
+
 
         // Set content view to multi layout
 
@@ -254,7 +257,7 @@ public class IntroActivity extends AppCompatActivity {
         answerRadio3.setText(answerC);
         answerRadio4.setText(answerD);
 
-
+        view.clearFocus();
     }
 
     /**
@@ -272,7 +275,7 @@ public class IntroActivity extends AppCompatActivity {
     public void selectMany(View view, String question, String answerA, String answerB, String answerC, String answerD, String theAnswer, String theAnswer2, String theAnswer3, String theAnswer4, String totalCorrectAnswers) {
 
 
-        hideKeyboard();
+
 
         // Set content view to many layout
         intro.setVisibility(View.GONE);
@@ -300,6 +303,7 @@ public class IntroActivity extends AppCompatActivity {
         answerCheck3.setText(answerC);
         answerCheck4.setText(answerD);
 
+        view.clearFocus();
 
     }
 
@@ -312,7 +316,7 @@ public class IntroActivity extends AppCompatActivity {
 
     public void selectFree(View view, String question) {
 
-        hideKeyboard();
+
 
 
         // Set our layout views to have the proper one visible.
@@ -329,6 +333,8 @@ public class IntroActivity extends AppCompatActivity {
         TextView questionTextView = findViewById(textView_free_question);
         questionTextView.setText(question);
 
+        view.clearFocus();
+
     }
 
     /**
@@ -337,7 +343,7 @@ public class IntroActivity extends AppCompatActivity {
 
 
     public void submitAnswer(View view) {
-        hideKeyboard();
+
         // Look at the question type tag from the string array that stores questions and select the proper case
         switch (questionType) {
 
@@ -441,20 +447,24 @@ public class IntroActivity extends AppCompatActivity {
             case "FREE":
 
                 selectedFreeAnswer = findViewById(R.id.editText_free_answer_one);
-                //Check to see if the edit text box matches the answer. Convert everything to lowercase for ease of comparison.
-                if (selectedFreeAnswer.getText().toString().toLowerCase().equals(theAnswer.toLowerCase())) {
+                //Check to see if the edit text box matches the answer. Convert everything to lowercase for ease of comparison. Trim off the whitespace at end if need be.
+                if (selectedFreeAnswer.getText().toString().toLowerCase().trim().equals(theAnswer.toLowerCase())) {
                     Toast.makeText(this, R.string.the_answer_was_correct, Toast.LENGTH_LONG).show();
 
                     answerKeeperArray[questionIndex][0] = selectedFreeAnswer.getText().toString();
                     totalScore = totalScore + 1;
                 } else {
-                    Toast.makeText(this, R.string.answer_wrong, Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, R.string.answer_wrong + theAnswer, Toast.LENGTH_LONG).show();
+                    answerKeeperArray[questionIndex][0] = selectedFreeAnswer.getText().toString();
+
                 }
                 break;
             default:
                 Toast.makeText(this, R.string.something_went_wrong, Toast.LENGTH_SHORT).show();
 
         }
+
+        view.clearFocus();
         increment(view);
 
     }
@@ -474,6 +484,7 @@ public class IntroActivity extends AppCompatActivity {
         } else
 
         {
+            view.clearFocus();
             selectQuestion();
         }
     }
@@ -492,6 +503,7 @@ public class IntroActivity extends AppCompatActivity {
         } else {
             // Move backwards through the question index.
             questionIndex = questionIndex - 1;
+            view.clearFocus();
             selectQuestion();
         }
     }
@@ -581,16 +593,16 @@ public class IntroActivity extends AppCompatActivity {
         // Check percent and grade A thru F
         if (percent < 0 || percent > 100) {
             grade = getString(R.string.error_out_of_bounds);
-        } else if (percent <= 59) {
-            grade = getString(R.string.end_grade_f);
-        } else if (percent >= 60) {
-            grade = getString(R.string.end_grade_d);
-        } else if (percent >= 70) {
-            grade = getString(R.string.end_grade_c);
-        } else if (percent >= 80) {
-            grade = getString(R.string.end_grade_b);
-        } else if (percent >= 90) {
+        } else if (percent <=100 && percent >=90) {
             grade = getString(R.string.end_grade_a);
+        } else if (percent <=90 && percent >= 80) {
+            grade = getString(R.string.end_grade_b);
+        } else if (percent <=80 && percent >= 70) {
+            grade = getString(R.string.end_grade_c);
+        } else if (percent <= 70 && percent >= 60) {
+            grade = getString(R.string.end_grade_d);
+        } else if (percent <= 60 && percent >=0) {
+            grade = getString(R.string.end_grade_f);
         } else {
             grade = getString(R.string.error_something_wrong);
         }
@@ -660,13 +672,6 @@ public class IntroActivity extends AppCompatActivity {
     }
 
 
-  public void hideKeyboard(){
-
-      //Hide softkey
-      InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-      //Hide:
-      imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-  }
 
 
 }
