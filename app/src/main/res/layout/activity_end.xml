@@ -12,10 +12,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:id="@+id/activity_end"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:orientation="vertical">
 
     <ImageView
@@ -24,7 +22,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:scaleType="centerCrop"
-
         android:src="@drawable/bg1" />
 <ScrollView
     android:layout_width="match_parent"
@@ -33,11 +30,9 @@
     android:layout_marginTop="@dimen/activity_horizontal_margin"
     >
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="50dp"
-
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
@@ -51,9 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Score"
-
             android:textColor="@color/colorText1"
-
             />
 
         <TextView
@@ -65,11 +58,8 @@
             android:gravity="center"
             android:text="@string/end_your_grade_is"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
-
-
             android:textColor="@android:color/darker_gray"
-            android:textSize="14sp"
-
+            android:textSize="@dimen/standard_text2"
             />
 
         <TextView
@@ -81,11 +71,8 @@
             android:gravity="center"
             android:text="1"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
-
-
             android:textColor="@android:color/darker_gray"
-            android:textSize="56sp"
-
+            android:textSize="@dimen/header2"
             />
 
         <ScrollView
@@ -114,7 +101,6 @@
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:onClick="sendMail"
              />
-
 
     </LinearLayout>
    </ScrollView>

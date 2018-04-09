@@ -28,7 +28,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
@@ -67,8 +66,8 @@
             android:layout_height="wrap_content"
            android:inputType="textPersonName"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:onClick="clearSelections"
-            android:text="@string/input_1"
+
+            android:hint="@string/please_enter_your_first_and_last_name"
             android:textColor="@color/colorText1" />
 
         <EditText
@@ -76,8 +75,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:inputType="textPersonName"
-            android:text="Email"
+            android:inputType="textWebEmailAddress"
+            android:hint="@string/email"
             android:textColor="@color/colorText1" />
 
 

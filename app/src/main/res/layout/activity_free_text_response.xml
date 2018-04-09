@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg5"
-
-
     android:orientation="vertical">
 
 
@@ -16,7 +14,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:scaleType="centerCrop"
-
         android:src="@drawable/bg2" />
 
     <LinearLayout
@@ -27,7 +24,6 @@
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/view_question_spacing"
-
         android:background="@color/colorTransWindow2"
         android:orientation="vertical"
         android:padding="@dimen/standard_padding">
@@ -47,7 +43,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
-
             android:textColor="@color/colorText1" />
 
         <LinearLayout
@@ -61,8 +56,6 @@
                 android:id="@+id/button_previous"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-
                 android:background="@drawable/ic_fast_rewind_white_48dp"
                 android:onClick="decrement" />
 
@@ -70,8 +63,6 @@
                 android:id="@+id/button_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-
                 android:background="@drawable/ic_assignment_turned_in_white_48dp"
                 android:onClick="submitAnswer" />
 
@@ -79,8 +70,6 @@
                 android:id="@+id/button_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-
                 android:background="@drawable/ic_forward_white_48dp"
                 android:onClick="increment" />
         </LinearLayout>

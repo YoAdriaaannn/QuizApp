@@ -3,4 +3,6 @@
     <dimen name="standard_padding">8dp</dimen>
     <dimen name="text_header_1">18sp</dimen>
     <dimen name="standard_text">14sp</dimen>
+    <dimen name="header2">56sp</dimen>
+    <dimen name="standard_text2">14sp</dimen>
 </resources>

@@ -5,11 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg4"
-
     android:orientation="vertical">
-
-
-
 
     <ImageView
         android:layout_width="match_parent"
@@ -17,7 +13,6 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/bg5"
-
         android:scaleType="centerCrop" />
 
     <LinearLayout
@@ -60,7 +55,6 @@
             android:backgroundTint="@color/colorText1"
             android:buttonTint="@color/colorText1"
             android:text="Answer 2"
-
             android:textColor="@color/colorText1" />
 
         <CheckBox
@@ -96,7 +90,6 @@
                 android:id="@+id/button_previous"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:background="@drawable/ic_fast_rewind_white_48dp"
                 android:onClick="decrement" />
 
@@ -104,10 +97,8 @@
                 android:id="@+id/button_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:background="@drawable/ic_assignment_turned_in_white_48dp"
                 android:onClick="submitAnswer"
-
                 />
 
 
@@ -115,12 +106,9 @@
                 android:id="@+id/button_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:background="@drawable/ic_fast_forward_white_48dp"
                 android:onClick="increment"
-
                 />
-
 
         </LinearLayout>
     </LinearLayout>

@@ -1,7 +1,6 @@
 package com.adrianraff.quizapp;
 
-import android.app.Activity;
-import android.content.Context;
+
 import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
@@ -10,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
+
 import android.widget.CheckBox;
 import android.widget.EditText;
 
@@ -104,7 +103,7 @@ public class IntroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        //TODO FIx layouts they are not keeping the formatting
+
         //Init all the layouts as viewgroups
         multi = findViewById(R.id.activity_multi_choice);
         many = findViewById(R.id.activity_one_or_more);
@@ -170,7 +169,6 @@ public class IntroActivity extends AppCompatActivity {
         // Hide the soft keyboard for better looks.
 
 
-
         // Grab a question from the string array
         StringTokenizer splitString = new StringTokenizer((getQuestions[questionIndex]), "|");
 
@@ -193,7 +191,7 @@ public class IntroActivity extends AppCompatActivity {
         switch (questionType) {
             case "MULTI":
 
-                selectMulti(multi, theQuestion, answerA, answerB, answerC, answerD, theAnswer);
+                selectMulti(multi, theQuestion, answerA, answerB, answerC, answerD);
                 break;
 
             case "MANY":
@@ -223,11 +221,9 @@ public class IntroActivity extends AppCompatActivity {
      * @param answerB   loads an answer choice into view
      * @param answerC   loads an answer choice into view
      * @param answerD   loads an answer choice into view
-     * @param theAnswer loads an answer choice into view
-     */
+      */
 
-    public void selectMulti(View view, String question, String answerA, String answerB, String answerC, String answerD, String theAnswer) {
-
+    public void selectMulti(View view, String question, String answerA, String answerB, String answerC, String answerD) {
 
 
         // Set content view to multi layout
@@ -275,8 +271,6 @@ public class IntroActivity extends AppCompatActivity {
     public void selectMany(View view, String question, String answerA, String answerB, String answerC, String answerD, String theAnswer, String theAnswer2, String theAnswer3, String theAnswer4, String totalCorrectAnswers) {
 
 
-
-
         // Set content view to many layout
         intro.setVisibility(View.GONE);
         end.setVisibility(View.GONE);
@@ -315,8 +309,6 @@ public class IntroActivity extends AppCompatActivity {
      */
 
     public void selectFree(View view, String question) {
-
-
 
 
         // Set our layout views to have the proper one visible.
@@ -512,13 +504,11 @@ public class IntroActivity extends AppCompatActivity {
      * End of quiz. Total the scores and grade the quiz results then give the user an option to email the results to a pre set mailbox.
      */
 
-    //TODO format all this junk better!!! The output is sloppy AF!
+
     public void endQuiz(View view) {
-        Toast.makeText(this, R.string.end_you_finished, Toast.LENGTH_SHORT).show();
 
 
         intro.setVisibility(View.GONE);
-
         end.setVisibility(View.VISIBLE);
         many.setVisibility(View.GONE);
         free.setVisibility(View.GONE);
@@ -530,7 +520,7 @@ public class IntroActivity extends AppCompatActivity {
         //Build a string from the contents in the answer keeper array
         StringBuilder strBuilder = new StringBuilder();
 
-        //TODO streamline this.....sloppy
+
         for (int i = 0; i < arrayLengthQuestions; i++) {
             splitQuestions = new StringTokenizer((getQuestions[i]), "|");
 
@@ -551,34 +541,37 @@ public class IntroActivity extends AppCompatActivity {
             strBuilder.append("\n \n" + theQuestion + "\n");
 
             // Roll through the array and append the recorded answers
+            strBuilder.append(getString(R.string.end_your_answers_were) + "\n");
             for (int j = 0; j < 4; j++) {
                 if (answerKeeperArray[i][j] != null) {
-                    strBuilder.append(getString(R.string.end_your_answers_were) + answerKeeperArray[i][j] + "\n");
+                    strBuilder.append(answerKeeperArray[i][j] + "\n");
                 }
+            }
+
+            // Roll through the array and append the correct answers
+            strBuilder.append(getString(R.string.end_correct_answers_were) + "\n");
+
+            //Check the string array for null answers. use "#" as a null field identifier only append the string if there is an additional correct answer.
+            if (!theAnswer.equals("#")) {
+                strBuilder.append(theAnswer + "\n");
+            }
+            if (!theAnswer2.equals("#")) {
+                strBuilder.append(theAnswer2 + "\n");
+            }
+            if (!theAnswer3.equals("#")) {
+                strBuilder.append(theAnswer3 + "\n");
+
+            }
+            if (!theAnswer4.equals("#")) {
+                strBuilder.append(theAnswer4 + "\n \n");
 
             }
 
 
         }
-        //Check the string array for null answers. use "#" as a null field identifier only append the string if there is an additional correct answer.
-        //TODO this isnt working exactly as intended. Fix it.
 
-        strBuilder.append(getString(R.string.end_correct_answers_were));
-        if (!theAnswer.equals("#")) {
-            strBuilder.append(theAnswer + " & ");
-        } else if (!theAnswer2.equals("#")) {
-            strBuilder.append(theAnswer2 + " & ");
-        } else if (!theAnswer3.equals("#")) {
-            strBuilder.append(theAnswer3 + " & ");
 
-        } else if (!theAnswer4.equals("#")) {
-            strBuilder.append(theAnswer4 + "\n \n");
-
-        }
-
-        //Append the answers here
-
-// Cast the string builder to a string and us it in the final message string
+        // Cast the string builder to a string and us it in the final message string
         String reviewMessage = strBuilder.toString();
 
 
@@ -593,15 +586,15 @@ public class IntroActivity extends AppCompatActivity {
         // Check percent and grade A thru F
         if (percent < 0 || percent > 100) {
             grade = getString(R.string.error_out_of_bounds);
-        } else if (percent <=100 && percent >=90) {
+        } else if (percent <= 100 && percent >= 90) {
             grade = getString(R.string.end_grade_a);
-        } else if (percent <=90 && percent >= 80) {
+        } else if (percent <= 90 && percent >= 80) {
             grade = getString(R.string.end_grade_b);
-        } else if (percent <=80 && percent >= 70) {
+        } else if (percent <= 80 && percent >= 70) {
             grade = getString(R.string.end_grade_c);
         } else if (percent <= 70 && percent >= 60) {
             grade = getString(R.string.end_grade_d);
-        } else if (percent <= 60 && percent >=0) {
+        } else if (percent <= 60 && percent >= 0) {
             grade = getString(R.string.end_grade_f);
         } else {
             grade = getString(R.string.error_something_wrong);
@@ -670,8 +663,6 @@ public class IntroActivity extends AppCompatActivity {
             startActivity(sendMail);
         }
     }
-
-
 
 
 }

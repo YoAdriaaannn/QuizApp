@@ -22,10 +22,8 @@
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/view_question_spacing"
-
         android:background="@color/colorTransWindow2"
         android:orientation="vertical"
-
         android:padding="@dimen/standard_padding">
 
         <TextView
@@ -57,7 +55,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:buttonTint="@color/colorText1"
-
                 android:text="@string/radiobutton_answer_multi_2"
                 android:textColor="@color/colorText1" />
 
@@ -68,7 +65,6 @@
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:buttonTint="@color/colorText1"
                 android:text="@string/radiobutton_multi_answer_3"
-
                 android:textColor="@color/colorText1" />
 
             <RadioButton
@@ -78,7 +74,6 @@
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:buttonTint="@color/colorText1"
                 android:text="@string/radiobutton_mutli_answer_4"
-
                 android:textColor="@color/colorText1" />
         </RadioGroup>
 
@@ -94,7 +89,6 @@
                 android:id="@+id/button_previous"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:background="@drawable/ic_fast_rewind_white_48dp"
                 android:onClick="decrement" />
 
@@ -102,7 +96,6 @@
                 android:id="@+id/button_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:background="@drawable/ic_assignment_turned_in_white_48dp"
                 android:onClick="submitAnswer"
 
@@ -113,13 +106,9 @@
                 android:id="@+id/button_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:background="@drawable/ic_fast_forward_white_48dp"
                 android:onClick="increment"
-
                 />
-
-
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

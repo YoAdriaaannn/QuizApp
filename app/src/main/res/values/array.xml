@@ -9,14 +9,14 @@
 <resources>
     <string-array name="testQuestionArray">
         <item>MULTI|What is the first brand of Japanese motorcycle ever sold in the USA?|A) Suzuki|B) Honda|C) Kawasaki|D) None of the above|B) Honda|#|#|#|1</item>
-        <item>MULTI|Where is Harley Davidson built?|A)San Fransisco, California|B)Portland, Oregon|C)Milwaukee, Wisconsin|D) None of the above|C)Milwaukee, Wisconsin|#|#|#|1</item>
+        <item>MULTI|Where is the Harley Davidson brand of motorcycles built?|A) San Fransisco, California|B) Portland, Oregon|C) Milwaukee, Wisconsin|D) None of the above|C) Milwaukee, Wisconsin|#|#|#|1</item>
         <item>FREE|A ______ mixes air and fuel for the engine|xxx|xxx|xxx|xxx|carburetor|#|#|#|1</item>
-        <item>FREE|What brand of motorcycle is choice among outlaw motorcycle clubs?|xxx|xxx|xxx|xxx|Harley Davidson|#|#|#|1</item>
-        <item>MANY|What are brands of motorcycles?|A) Jawa|B) CZ|C) Dell|D) BMW|A) Jawa|B) CZ|#|D) BMW|3</item>
-        <item>MANY|What are found on a motorcycle?|A) A handlebar|B) A steering wheel|C) A Twist thingy|D) None of the above|A) A handlebar|#|#|#|1</item>
-        <item>MULTI|What is a fuel petcock|A)A fuel tank|B)A fuel switch|C)A fuel valve|D) A pet chicken|C)A fuel valve|#|#|#|1</item>
-        <item>FREE|_____ , was the year of the first Honda CB750|1969|xxx|xxx|xxx|1969|#|#|#|1</item>
-        <item>MANY|What are good practices when riding a motorcycle|A) Pretend that you are invisible|B) Ride to the left of a lane|C) Ride slower than the speed of traffic|D) Never wear a helment|A) Pretend that you are invisible|B) Ride to the left of a lane|#|#|2</item>
+        <item>FREE|What brand of motorcycle is choice among outlaw motorcycle clubs in the USA?|xxx|xxx|xxx|xxx|Harley Davidson|#|#|#|1</item>
+        <item>MANY|Out of this list, what are brands of motorcycles? (Click all that apply)|A) Jawa|B) CZ|C) Dell|D) BMW|A) Jawa|B) CZ|#|D) BMW|3</item>
+        <item>MANY|What items listed here are found on a motorcycle? (Click all that apply)|A) A handlebar|B) A steering wheel|C) A Twist thingy|D) None of the above|A) A handlebar|#|#|#|1</item>
+        <item>MULTI|What is a fuel petcock?|A) A fuel tank|B) A fuel switch|C) A fuel valve|D) A pet chicken|C) A fuel valve|#|#|#|1</item>
+        <item>FREE|_____ , was the year of the first Honda CB750 was put into production?|1969|xxx|xxx|xxx|1969|#|#|#|1</item>
+        <item>MANY|What are good practices when riding a motorcycle? (Click all that apply)|A) Pretend that you are invisible|B) Ride to the left of a lane|C) Ride slower than the speed of traffic|D) Never wear a helment|A) Pretend that you are invisible|B) Ride to the left of a lane|#|#|2</item>
 
     </string-array>
 </resources>

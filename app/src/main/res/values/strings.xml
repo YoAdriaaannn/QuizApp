@@ -46,4 +46,6 @@
     <string name="end_that_is">That is &#160;</string>
     <string name="percent">%</string>
     <string name="end_overall_grade">Your overall grade was: &#160;</string>
+    <string name="please_enter_your_first_and_last_name">Please enter your first and last name.</string>
+    <string name="email">Email</string>
 </resources>
