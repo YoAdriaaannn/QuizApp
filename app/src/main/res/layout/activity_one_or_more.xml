@@ -23,7 +23,7 @@
         android:layout_marginRight="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/view_question_spacing"
         android:padding="@dimen/standard_padding"
-        android:background="@color/colorTransWindow2"
+        android:background="@drawable/layout_bg"
         android:orientation="vertical">
 
 
