@@ -41,11 +41,11 @@ public class IntroActivity extends AppCompatActivity {
      */
 
     // For user name
-    private EditText userName;
+    public EditText userName;
 
     // For email to send results
 
-    private EditText emailAddress;
+    public EditText emailAddress;
     public String emailTarget;
 
 
@@ -75,20 +75,20 @@ public class IntroActivity extends AppCompatActivity {
     public CheckBox answerCheck4;
 
     //Radio group for answers
-    RadioGroup radioAnswer;
+    public RadioGroup radioAnswer;
 
 
     // Radio button for multi choice answers
-    RadioButton answerRadio1;
-    RadioButton answerRadio2;
-    RadioButton answerRadio3;
-    RadioButton answerRadio4;
+    public RadioButton answerRadio1;
+    public RadioButton answerRadio2;
+    public RadioButton answerRadio3;
+    public RadioButton answerRadio4;
 
     // used to grab total questions
     public int arrayLengthQuestions;
 
     // Used to get answer from user in free answer questions.
-    EditText selectedFreeAnswer;
+    public EditText selectedFreeAnswer;
 
     // Total correct answer keeper
     public int totalScore = 0;
@@ -101,7 +101,6 @@ public class IntroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
         //Init all the layouts as viewgroups
@@ -166,8 +165,6 @@ public class IntroActivity extends AppCompatActivity {
 
     public void selectQuestion() {
 
-        // Hide the soft keyboard for better looks.
-
 
         // Grab a question from the string array
         StringTokenizer splitString = new StringTokenizer((getQuestions[questionIndex]), "|");
@@ -215,13 +212,13 @@ public class IntroActivity extends AppCompatActivity {
     /**
      * A multiple choice question with only one possible answer was selected.
      *
-     * @param view      controls which layout is loaded
-     * @param question  loads the question into the view
-     * @param answerA   loads an answer choice into view
-     * @param answerB   loads an answer choice into view
-     * @param answerC   loads an answer choice into view
-     * @param answerD   loads an answer choice into view
-      */
+     * @param view     controls which layout is loaded
+     * @param question loads the question into the view
+     * @param answerA  loads an answer choice into view
+     * @param answerB  loads an answer choice into view
+     * @param answerC  loads an answer choice into view
+     * @param answerD  loads an answer choice into view
+     */
 
     public void selectMulti(View view, String question, String answerA, String answerB, String answerC, String answerD) {
 
@@ -320,6 +317,13 @@ public class IntroActivity extends AppCompatActivity {
         multi.setVisibility(View.GONE);
         clearSelections(view);
 
+        // Check the  answer keeper array to see if anything is stored in there. If so set the answer field of the question to
+        // the answer stored in the array.
+
+        if(answerKeeperArray[questionIndex][0] != null) {
+            selectedFreeAnswer = findViewById(R.id.editText_free_answer_one);
+            selectedFreeAnswer.setText(answerKeeperArray[questionIndex][0]);
+        }
 
         // Set the textview with the question to be asked.
         TextView questionTextView = findViewById(textView_free_question);
