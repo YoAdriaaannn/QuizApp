@@ -18,6 +18,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.util.StringTokenizer;
 
 import static com.adrianraff.quizapp.R.id.checkbox_answer_one_or_more_1;
@@ -152,6 +153,7 @@ public class IntroActivity extends AppCompatActivity {
         String enteredName = userName.getText().toString();
         emailTarget = emailAddress.getText().toString();
         String message = getString(R.string.startApp_thank_you) + enteredName + getString(R.string.startApp_get_ready);
+
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         view.clearFocus();
         selectQuestion();
@@ -245,6 +247,30 @@ public class IntroActivity extends AppCompatActivity {
         answerRadio3 = findViewById(radioButton_answer_multi_3);
         answerRadio4 = findViewById(radioButton_answer_multi_4);
 
+        // Check if answer array has a stored answer if so check the box
+
+        if(answerKeeperArray[questionIndex][0] != null) {
+           answerRadio1.setChecked(true);
+        }
+        else {  answerRadio1.setChecked(false); }
+
+        if(answerKeeperArray[questionIndex][1] != null) {
+            answerRadio2.setChecked(true);
+        }
+        else { answerRadio2.setChecked(false); }
+
+        if(answerKeeperArray[questionIndex][2] != null) {
+            answerRadio3.setChecked(true);
+        }
+        else {answerRadio3.setChecked(false); }
+
+        if(answerKeeperArray[questionIndex][3] != null) {
+            answerRadio4.setChecked(true);
+
+        }
+        else {answerRadio4.setChecked(false);}
+
+
         answerRadio1.setText(answerA);
         answerRadio2.setText(answerB);
         answerRadio3.setText(answerC);
@@ -288,11 +314,33 @@ public class IntroActivity extends AppCompatActivity {
         answerCheck3 = findViewById(checkbox_answer_one_or_more_3);
         answerCheck4 = findViewById(checkbox_answer_one_or_more_4);
 
+        // Check if answer array has a stored answer if so check the box
+
+        if(answerKeeperArray[questionIndex][0] != null) {
+          answerCheck1.setChecked(true);
+        }
+
+        if(answerKeeperArray[questionIndex][1] != null) {
+            answerCheck2.setChecked(true);
+        }
+
+        if(answerKeeperArray[questionIndex][2] != null) {
+            answerCheck3.setChecked(true);
+        }
+
+        if(answerKeeperArray[questionIndex][3] != null) {
+            answerCheck4.setChecked(true);
+        }
+
+
+
+        // Load the checkboxes with possible answers to the question
 
         answerCheck1.setText(answerA);
         answerCheck2.setText(answerB);
         answerCheck3.setText(answerC);
         answerCheck4.setText(answerD);
+
 
         view.clearFocus();
 
