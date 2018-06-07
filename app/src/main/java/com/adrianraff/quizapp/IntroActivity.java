@@ -1,3 +1,41 @@
+/*
+ * Copyright (c) 2018.  Adrian Raff AKA Fr0stsp1re
+ * ************PROJECT LICENSE*************
+ *
+ * This project was submitted by Adrian Raff as part of the  Android Basics Nanodegree At Udacity.
+ *
+ * The Udacity Honor code requires your submissions must be your own work.
+ * Submitting this project as yours will cause you to break the Udacity Honor Code
+ * and may result in disciplinary action.
+ *
+ * The author of this project allows you to check the code as a reference only. You may not submit this project or any part
+ * of the code as your own.
+ *
+ * Besides the above notice, the following license applies and this license notice
+ * must be included in all works derived from this project.
+ *
+ * MIT License
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+
 package com.adrianraff.quizapp;
 
 
@@ -42,6 +80,7 @@ public class IntroActivity extends AppCompatActivity {
      */
 
     // For user name
+
     public EditText userName;
 
     // For email to send results
@@ -51,6 +90,7 @@ public class IntroActivity extends AppCompatActivity {
 
 
     // For layout changes. These designate the layout based on question type.
+
     private ViewGroup multi;
     private ViewGroup many;
     private ViewGroup free;
@@ -58,43 +98,55 @@ public class IntroActivity extends AppCompatActivity {
     private ViewGroup intro;
 
 
-    //Used to move through question array index
+    //Used to move through question array index. This variable plays a key role in the stack and acts as the index number for the array.
+
     public int questionIndex;
+
+    // String variables to hold the questions and answers stored in the arrays.xml
 
     public String questionType, theQuestion, answerA, answerB, answerC, answerD, theAnswer, theAnswer2, theAnswer3, theAnswer4, totalCorrectAnswers;
 
+    // Used for parsing the questions from the arrays.xml
 
     public String[] getQuestions;
 
     //Used to record stored answers
+
     public String answerKeeperArray[][];
 
-    // Checkbox answers
+    // Checkboxes for mor than one answer type questions
+
     public CheckBox answerCheck1;
     public CheckBox answerCheck2;
     public CheckBox answerCheck3;
     public CheckBox answerCheck4;
 
-    //Radio group for answers
+    // Radio group for answers
+
     public RadioGroup radioAnswer;
 
 
     // Radio button for multi choice answers
+
     public RadioButton answerRadio1;
     public RadioButton answerRadio2;
     public RadioButton answerRadio3;
     public RadioButton answerRadio4;
 
-    // used to grab total questions
+    // used to grab total questions stored in the string array contained in arrays.xml
+
     public int arrayLengthQuestions;
 
     // Used to get answer from user in free answer questions.
+
     public EditText selectedFreeAnswer;
 
-    // Total correct answer keeper
+    // Total correct answer keeper init to zero to start
+
     public int totalScore = 0;
 
     // Used for email summary
+
     public String emailSummary;
 
 
@@ -105,6 +157,7 @@ public class IntroActivity extends AppCompatActivity {
 
 
         //Init all the layouts as viewgroups
+
         multi = findViewById(R.id.activity_multi_choice);
         many = findViewById(R.id.activity_one_or_more);
         free = findViewById(R.id.activity_free_text);
@@ -112,6 +165,7 @@ public class IntroActivity extends AppCompatActivity {
         intro = findViewById(R.id.activity_intro);
 
         //Set initial visibility of viewgroups
+
         intro.setVisibility(View.VISIBLE);
         multi.setVisibility(View.INVISIBLE);
         end.setVisibility(View.INVISIBLE);
@@ -120,9 +174,11 @@ public class IntroActivity extends AppCompatActivity {
 
 
         // used to get user name
+
         userName = findViewById(R.id.editText_user_name);
 
         // used to grab email address from user
+
         emailAddress = findViewById(R.id.editText_email_address);
 
 
@@ -130,14 +186,19 @@ public class IntroActivity extends AppCompatActivity {
         radioAnswer = findViewById(R.id.radio_answers);
 
         // used to page through the questions
+
         questionIndex = 0;
+
         // used to retrieve the questions from the string array
+
         getQuestions = res.getStringArray(R.array.testQuestionArray);
 
         // determine the total amount of questions based on the array length
+
         arrayLengthQuestions = getQuestions.length;
 
         // array to store answers the user selected
+
         answerKeeperArray = new String[arrayLengthQuestions][4];
 
 
@@ -155,6 +216,8 @@ public class IntroActivity extends AppCompatActivity {
         String message = getString(R.string.startApp_thank_you) + enteredName + getString(R.string.startApp_get_ready);
 
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+
+        // Clear focus and select the first question
         view.clearFocus();
         selectQuestion();
 
@@ -162,17 +225,19 @@ public class IntroActivity extends AppCompatActivity {
     }
 
     /**
-     * Call this to select a question
+     * Call this to select a question and load it into the correct view group
      */
 
     public void selectQuestion() {
 
 
-        // Grab a question from the string array
+        // Grab a question from the string array. Use "|" as a delimiter for our pseudo flat file database
+
         StringTokenizer splitString = new StringTokenizer((getQuestions[questionIndex]), "|");
 
 
         // Parse the array into some string variables with the tokenizer
+
         questionType = splitString.nextToken();
         theQuestion = splitString.nextToken();
         answerA = splitString.nextToken();
@@ -187,7 +252,9 @@ public class IntroActivity extends AppCompatActivity {
 
 
         // Check to see which type of question is being selected from the question string array and call the proper method to display it.
+
         switch (questionType) {
+
             case "MULTI":
 
                 selectMulti(multi, theQuestion, answerA, answerB, answerC, answerD);
@@ -234,6 +301,7 @@ public class IntroActivity extends AppCompatActivity {
         free.setVisibility(View.INVISIBLE);
 
         // Clear all the views from user selections
+
         clearSelections(view);
 
         // Set the values of the UI text to the string variable values. String theQuestionOne contains the question type.
@@ -250,26 +318,32 @@ public class IntroActivity extends AppCompatActivity {
         // Check if answer array has a stored answer if so check the box
 
         if(answerKeeperArray[questionIndex][0] != null) {
-           answerRadio1.setChecked(true);
+
+            if (answerKeeperArray[questionIndex][0].equals(answerA)) {
+                answerRadio1.setChecked(true);
+            } else {
+                answerRadio1.setChecked(false);
+            }
+
+            if (answerKeeperArray[questionIndex][0].equals(answerB)) {
+                answerRadio2.setChecked(true);
+            } else {
+                answerRadio2.setChecked(false);
+            }
+
+            if (answerKeeperArray[questionIndex][0].equals(answerC)) {
+                answerRadio3.setChecked(true);
+            } else {
+                answerRadio3.setChecked(false);
+            }
+
+            if (answerKeeperArray[questionIndex][0].equals(answerD)){
+                answerRadio4.setChecked(true);
+
+            } else {
+                answerRadio4.setChecked(false);
+            }
         }
-        else {  answerRadio1.setChecked(false); }
-
-        if(answerKeeperArray[questionIndex][1] != null) {
-            answerRadio2.setChecked(true);
-        }
-        else { answerRadio2.setChecked(false); }
-
-        if(answerKeeperArray[questionIndex][2] != null) {
-            answerRadio3.setChecked(true);
-        }
-        else {answerRadio3.setChecked(false); }
-
-        if(answerKeeperArray[questionIndex][3] != null) {
-            answerRadio4.setChecked(true);
-
-        }
-        else {answerRadio4.setChecked(false);}
-
 
         answerRadio1.setText(answerA);
         answerRadio2.setText(answerB);
@@ -281,20 +355,13 @@ public class IntroActivity extends AppCompatActivity {
 
     /**
      * A question with many answers is selected. Passed arguments are the questions and answers to set the text of the layout.
-     *
-     * @param view      controls the loaded view
-     * @param question  loads the question into the view
-     * @param answerA   loads an answer choice into view
-     * @param answerB   loads an answer choice into view
-     * @param answerC   loads an answer choice into view
-     * @param answerD   loads an answer choice into view
-     * @param theAnswer loads the answer for comparison
      */
 
     public void selectMany(View view, String question, String answerA, String answerB, String answerC, String answerD, String theAnswer, String theAnswer2, String theAnswer3, String theAnswer4, String totalCorrectAnswers) {
 
 
         // Set content view to many layout
+
         intro.setVisibility(View.GONE);
         end.setVisibility(View.GONE);
         many.setVisibility(View.VISIBLE);
@@ -374,6 +441,7 @@ public class IntroActivity extends AppCompatActivity {
         }
 
         // Set the textview with the question to be asked.
+
         TextView questionTextView = findViewById(textView_free_question);
         questionTextView.setText(question);
 
@@ -403,17 +471,17 @@ public class IntroActivity extends AppCompatActivity {
                 }
 
                 String selectedMultiAnswer = ((RadioButton) findViewById(rg.getCheckedRadioButtonId())).getText().toString();
-                Toast.makeText(this, "Your answer was " + selectedMultiAnswer, Toast.LENGTH_SHORT).show();
+
 
                 //If the selected answer matches the stored correct answer from our array of questions, increase the total score counter
                 // and record the answer in the answer keeper array
                 if (selectedMultiAnswer.equals(theAnswer)) {
-                    Toast.makeText(this, "The answer was correct. " + theAnswer, Toast.LENGTH_LONG).show();
+
                     answerKeeperArray[questionIndex][0] = selectedMultiAnswer;
                     totalScore = totalScore + 1;
 
                 } else {
-                    Toast.makeText(this, "WRONG! The answer was " + theAnswer, Toast.LENGTH_LONG).show();
+
                     //log the answer to the array even if it is wrong
                     answerKeeperArray[questionIndex][0] = selectedMultiAnswer;
 
@@ -426,7 +494,7 @@ public class IntroActivity extends AppCompatActivity {
                 if (answerCheck1.isChecked() && answerCheck1.getText().toString().equals(theAnswer)) {
                     // log answer into array
                     answerKeeperArray[questionIndex][0] = theAnswer;
-                    Toast.makeText(this, R.string.answer_correct_a, Toast.LENGTH_SHORT).show();
+
                     manyCorrectAnswerKeeper++;
                 }
 
@@ -439,7 +507,7 @@ public class IntroActivity extends AppCompatActivity {
                 if (answerCheck2.isChecked() && answerCheck2.getText().toString().equals(theAnswer2)) {
                     //log answer into array
                     answerKeeperArray[questionIndex][1] = theAnswer2;
-                    Toast.makeText(this, R.string.answer_correct_b, Toast.LENGTH_SHORT).show();
+
                     manyCorrectAnswerKeeper++;
                 }
 
@@ -453,7 +521,7 @@ public class IntroActivity extends AppCompatActivity {
                 if (answerCheck3.isChecked() && answerCheck3.getText().toString().equals(theAnswer3)) {
                     //log answer into array
                     answerKeeperArray[questionIndex][2] = theAnswer3;
-                    Toast.makeText(this, R.string.answer_correct_c, Toast.LENGTH_SHORT).show();
+
                     manyCorrectAnswerKeeper++;
                 }
 
@@ -466,7 +534,7 @@ public class IntroActivity extends AppCompatActivity {
                 if (answerCheck4.isChecked() && answerCheck4.getText().toString().equals(theAnswer4)) {
                     //log answer into array
                     answerKeeperArray[questionIndex][3] = theAnswer4;
-                    Toast.makeText(this, R.string.answer_correct_d, Toast.LENGTH_SHORT).show();
+
                     manyCorrectAnswerKeeper++;
                 }
 
@@ -480,10 +548,10 @@ public class IntroActivity extends AppCompatActivity {
                 // we must cast the total to an integer to compare.
                 int castStringTotalCorrectAnswers = Integer.parseInt(totalCorrectAnswers);
                 if (manyCorrectAnswerKeeper == castStringTotalCorrectAnswers) {
-                    Toast.makeText(this, R.string.answers_correct, Toast.LENGTH_SHORT).show();
+
                     totalScore = totalScore + 1;
                 } else {
-                    Toast.makeText(this, R.string.answer_try_again, Toast.LENGTH_SHORT).show();
+
                 }
                 break;
 
@@ -493,21 +561,23 @@ public class IntroActivity extends AppCompatActivity {
                 selectedFreeAnswer = findViewById(R.id.editText_free_answer_one);
                 //Check to see if the edit text box matches the answer. Convert everything to lowercase for ease of comparison. Trim off the whitespace at end if need be.
                 if (selectedFreeAnswer.getText().toString().toLowerCase().trim().equals(theAnswer.toLowerCase())) {
-                    Toast.makeText(this, R.string.the_answer_was_correct, Toast.LENGTH_LONG).show();
+
 
                     answerKeeperArray[questionIndex][0] = selectedFreeAnswer.getText().toString();
                     totalScore = totalScore + 1;
                 } else {
-                    Toast.makeText(this, R.string.answer_wrong + theAnswer, Toast.LENGTH_LONG).show();
+
                     answerKeeperArray[questionIndex][0] = selectedFreeAnswer.getText().toString();
 
                 }
                 break;
+
             default:
                 Toast.makeText(this, R.string.something_went_wrong, Toast.LENGTH_SHORT).show();
 
         }
 
+        // Clear focus and increment to next question
         view.clearFocus();
         increment(view);
 
@@ -517,6 +587,7 @@ public class IntroActivity extends AppCompatActivity {
     /**
      * Increase the questionIndex to select a question based on the index number from the array.xml file
      */
+
     public void increment(View view) {
 
 
@@ -537,6 +608,7 @@ public class IntroActivity extends AppCompatActivity {
     /**
      * Decrease the question index to go to the previous questions.
      */
+
     public void decrement(View view) {
 
 
@@ -632,10 +704,11 @@ public class IntroActivity extends AppCompatActivity {
         TextView endQuizGrade = findViewById(R.id.textView_grade);
 
         // Calculate percentage of score and grade it
+
         String grade;
         String messageScore;
         int percent = (totalScore * 100) / arrayLengthQuestions;
-        // Check percent and grade A thru F
+        // Check percent and grade
         if (percent < 0 || percent > 100) {
             grade = getString(R.string.error_out_of_bounds);
         } else if (percent <= 100 && percent >= 90) {
@@ -656,9 +729,9 @@ public class IntroActivity extends AppCompatActivity {
         messageScore = getString(R.string.end_congrats) + userName.getText().toString() + getString(R.string.exclamation) + getString(R.string.end_you_made_it_to_the_end) + "\n" + getString(R.string.end_total_questions_righ) + totalScore + getString(R.string.end_out_of) + arrayLengthQuestions + "\n" + getString(R.string.end_that_is) + percent + getString(R.string.percent) + "\n \n \n";
         endQuizScore.setText(messageScore);
         endQuizGrade.setText(grade);
-        endQuizReview.setText(getString(R.string.grade_theAnswersYouSelectedWere) + "\n \n \n" + reviewMessage.toString());
+        endQuizReview.setText(getString(R.string.grade_theAnswersYouSelectedWere) + "\n \n" + reviewMessage);
 
-        emailSummary = messageScore + getString(R.string.end_overall_grade) + grade + "\n" + getString(R.string.grade_theAnswersYouSelectedWere) + "\n" + reviewMessage.toString();
+        emailSummary = messageScore + getString(R.string.end_overall_grade) + grade + "\n" + getString(R.string.grade_theAnswersYouSelectedWere) + "\n" + reviewMessage;
     }
 
 
@@ -698,6 +771,8 @@ public class IntroActivity extends AppCompatActivity {
             userName.setText("");
         }
     }
+
+    // Send an email with the test results.
 
     public void sendMail(View view) {
 

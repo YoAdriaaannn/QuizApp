@@ -1,11 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--
-  ~ Copyright Adrian Raff 2018.
+  ~ Copyright (c) 2018.  Adrian Raff AKA Fr0stsp1re
+  ~ *************PROJECT LICENSE*************
   ~
-  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-  ~ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  ~ This project was submitted by Adrian Raff as part of the  Android Basics Nanodegree At Udacity.
+  ~
+  ~ The Udacity Honor code requires your submissions must be your own work.
+  ~ Submitting this project as yours will cause you to break the Udacity Honor Code
+  ~ and may result in disciplinary action.
+  ~
+  ~ The author of this project allows you to check the code as a reference only. You may not submit this project or any part
+  ~ of the code as your own.
+  ~
+  ~ Besides the above notice, the following license applies and this license notice
+  ~ must be included in all works derived from this project.
+  ~
+  ~ MIT License
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
   ~
   -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -14,6 +43,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- BG Image -->
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,6 +52,8 @@
         android:layout_centerHorizontal="true"
         android:scaleType="centerCrop"
         android:src="@drawable/bg3" />
+
+    <!-- Scroll view as we have lots of text bleed off the bottom -->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -37,7 +70,7 @@
             android:orientation="vertical"
             android:padding="@dimen/standard_padding">
 
-
+            <!-- Header app namm -->
             <TextView
                 android:id="@+id/text_header_app_name"
                 android:layout_width="match_parent"
@@ -50,16 +83,17 @@
                 android:textColor="@color/colorText1"
                 android:textSize="@dimen/text_header_1" />
 
-
+            <!-- Intro message -->
             <TextView
                 android:id="@+id/textView_intro_instructions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/normalText"
+
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:text="@string/text_instructions"
-                android:textColor="@color/colorText1"
-                android:textSize="@dimen/standard_text" />
 
+               />
+
+            <!-- Grab user name -->
 
             <EditText
                 android:id="@+id/editText_user_name"
@@ -70,6 +104,8 @@
                 android:inputType="textPersonName"
                 android:textColor="@color/colorText1" />
 
+            <!-- Grab email address to send result to -->
+
             <EditText
                 android:id="@+id/editText_email_address"
                 android:layout_width="match_parent"
@@ -79,6 +115,7 @@
                 android:inputType="textWebEmailAddress"
                 android:textColor="@color/colorText1" />
 
+            <!-- Submit info and begin quiz -->
 
             <Button
                 android:id="@+id/button_play"
@@ -87,7 +124,9 @@
                 android:background="@drawable/ic_forward_white_48dp"
                 android:onClick="startApp" />
 
+
         </LinearLayout>
+
     </ScrollView>
 
 </RelativeLayout>

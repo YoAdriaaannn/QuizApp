@@ -1,4 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2018.  Adrian Raff AKA Fr0stsp1re
+  ~ *************PROJECT LICENSE*************
+  ~
+  ~ This project was submitted by Adrian Raff as part of the  Android Basics Nanodegree At Udacity.
+  ~
+  ~ The Udacity Honor code requires your submissions must be your own work.
+  ~ Submitting this project as yours will cause you to break the Udacity Honor Code
+  ~ and may result in disciplinary action.
+  ~
+  ~ The author of this project allows you to check the code as a reference only. You may not submit this project or any part
+  ~ of the code as your own.
+  ~
+  ~ Besides the above notice, the following license applies and this license notice
+  ~ must be included in all works derived from this project.
+  ~
+  ~ MIT License
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  ~
+  -->
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:id="@+id/activity_one_or_more"
@@ -7,13 +44,15 @@
     android:background="@drawable/bg4"
     android:orientation="vertical">
 
+    <!-- BG image -->
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/bg5"
-        android:scaleType="centerCrop" />
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg5" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,19 +61,17 @@
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/view_question_spacing"
-        android:padding="@dimen/standard_padding"
         android:background="@drawable/layout_bg"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/standard_padding">
 
+        <!-- Question -->
 
         <TextView
             android:id="@+id/textView_question_one_or_more"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:text="Question"
-            android:textColor="@color/colorText1" />
+            style="@style/normalText" />
 
+        <!-- Checkboxes for user answers -->
 
         <CheckBox
             android:id="@+id/checkbox_answer_one_or_more_1"
@@ -78,13 +115,16 @@
             android:text="Answer 4"
             android:textColor="@color/colorText1" />
 
+        <!-- Navigation through questions and click to submit answer section -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center"
+            android:orientation="horizontal"
             android:padding="@dimen/standard_padding">
 
+            <!-- Previous question -->
 
             <Button
                 android:id="@+id/button_previous"
@@ -92,26 +132,27 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_fast_rewind_white_48dp"
                 android:onClick="decrement" />
+            <!-- Submit answer -->
 
             <Button
                 android:id="@+id/button_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_assignment_turned_in_white_48dp"
-                android:onClick="submitAnswer"
-                />
-
+                android:onClick="submitAnswer" />
+            <!-- Next Question -->
 
             <Button
                 android:id="@+id/button_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_fast_forward_white_48dp"
-                android:onClick="increment"
-                />
+                android:background="@drawable/ic_forward_white_48dp"
+                android:onClick="increment" />
 
         </LinearLayout>
+
     </LinearLayout>
+
 </RelativeLayout>
 
 
